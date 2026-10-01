@@ -40,20 +40,20 @@
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(330, 156);
+            lblUsuario.Location = new Point(120, 96);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.Size = new Size(50, 15);
             lblUsuario.TabIndex = 0;
-            lblUsuario.Text = "Usuario";
+            lblUsuario.Text = "Usuario:";
             // 
             // lblContraseña
             // 
             lblContraseña.AutoSize = true;
-            lblContraseña.Location = new Point(319, 223);
+            lblContraseña.Location = new Point(120, 158);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(67, 15);
+            lblContraseña.Size = new Size(70, 15);
             lblContraseña.TabIndex = 1;
-            lblContraseña.Text = "Contraseña";
+            lblContraseña.Text = "Contraseña:";
             // 
             // lblMensaje
             // 
@@ -65,14 +65,14 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(305, 184);
+            txtUsuario.Location = new Point(193, 93);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(100, 23);
             txtUsuario.TabIndex = 3;
             // 
             // txtContrasena
             // 
-            txtContrasena.Location = new Point(305, 250);
+            txtContrasena.Location = new Point(193, 155);
             txtContrasena.Name = "txtContrasena";
             txtContrasena.PasswordChar = '*';
             txtContrasena.Size = new Size(100, 23);
@@ -80,9 +80,9 @@
             // 
             // btnIngresar
             // 
-            btnIngresar.Location = new Point(249, 330);
+            btnIngresar.Location = new Point(104, 207);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(92, 23);
+            btnIngresar.Size = new Size(96, 32);
             btnIngresar.TabIndex = 5;
             btnIngresar.Text = "Iniciar Sesión";
             btnIngresar.UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(374, 330);
+            btnSalir.Location = new Point(223, 207);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(80, 32);
             btnSalir.TabIndex = 6;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(472, 324);
             Controls.Add(btnSalir);
             Controls.Add(btnIngresar);
             Controls.Add(txtContrasena);
@@ -112,7 +112,6 @@
             Controls.Add(lblUsuario);
             Name = "LoginForm";
             Text = "LoginForm";
-//            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

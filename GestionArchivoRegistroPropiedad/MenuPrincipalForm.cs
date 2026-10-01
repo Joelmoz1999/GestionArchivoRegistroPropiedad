@@ -88,7 +88,8 @@ namespace GestionArchivoRegistroPropiedad
 
         private void mnuCustodia_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Módulo de Custodia (Paso 5).", "Próximamente");
+            var formCustodia = new GestionCustodiaForm(_context);
+            formCustodia.ShowDialog();
         }
 
         private void mnuReportes_Click_1(object sender, EventArgs e)
