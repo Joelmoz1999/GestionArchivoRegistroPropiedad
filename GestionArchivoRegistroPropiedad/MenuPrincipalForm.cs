@@ -77,7 +77,8 @@ namespace GestionArchivoRegistroPropiedad
 
         private void mnuGestionFuncionarios_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Módulo de Funcionarios (Próximamente).", "Próximamente");
+            var formFunc = new GestionFuncionariosForm(_context);
+            formFunc.ShowDialog();
         }
 
         private void mnuGestionUsuarios_Click_1(object sender, EventArgs e)
