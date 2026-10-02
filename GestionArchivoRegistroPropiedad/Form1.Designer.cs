@@ -36,7 +36,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1014, 512);
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menu Principal";
             Load += Form1_Load_1;
             ResumeLayout(false);
         }

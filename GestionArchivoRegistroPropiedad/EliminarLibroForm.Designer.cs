@@ -91,7 +91,8 @@
             Controls.Add(lblInfo);
             Controls.Add(lblCodigo);
             Name = "EliminarLibroForm";
-            Text = "EliminarLibroForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Eliminar Libro";
             Load += EliminarLibroForm_Load;
             ResumeLayout(false);
             PerformLayout();

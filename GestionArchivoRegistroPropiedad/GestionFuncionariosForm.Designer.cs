@@ -491,7 +491,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tabControlFuncionarios);
             Name = "GestionFuncionariosForm";
-            Text = "GestionFuncionariosForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestion Funcionarios";
             tabControlFuncionarios.ResumeLayout(false);
             tabAgregar.ResumeLayout(false);
             tabAgregar.PerformLayout();

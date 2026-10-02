@@ -48,7 +48,6 @@
             reporteDeCustodiasToolStripMenuItem = new ToolStripMenuItem();
             reporteDeFuncionariosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
-            label1 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -99,21 +98,21 @@
             // mnuAgregarLibro
             // 
             mnuAgregarLibro.Name = "mnuAgregarLibro";
-            mnuAgregarLibro.Size = new Size(180, 22);
+            mnuAgregarLibro.Size = new Size(155, 22);
             mnuAgregarLibro.Text = "Agregar Libro";
             mnuAgregarLibro.Click += agregarLibroToolStripMenuItem_Click;
             // 
             // mnuModificarLibro
             // 
             mnuModificarLibro.Name = "mnuModificarLibro";
-            mnuModificarLibro.Size = new Size(180, 22);
+            mnuModificarLibro.Size = new Size(155, 22);
             mnuModificarLibro.Text = "Modificar Libro";
             mnuModificarLibro.Click += modificarLibroToolStripMenuItem_Click;
             // 
             // eliminarLibroToolStripMenuItem
             // 
             eliminarLibroToolStripMenuItem.Name = "eliminarLibroToolStripMenuItem";
-            eliminarLibroToolStripMenuItem.Size = new Size(180, 22);
+            eliminarLibroToolStripMenuItem.Size = new Size(155, 22);
             eliminarLibroToolStripMenuItem.Text = "Eliminar Libro";
             eliminarLibroToolStripMenuItem.Click += eliminarLibroToolStripMenuItem_Click;
             // 
@@ -194,26 +193,17 @@
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(324, 176);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
-            // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(892, 547);
-            Controls.Add(label1);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalForm";
-            Text = "MenuPrincipalForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestión de Archivo - Registro de la Propiedad del Cantón Pedro Vicente Maldonado";
             Load += MenuPrincipalForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -225,7 +215,6 @@
 
         private MenuStrip menuStrip1;
         private StatusStrip statusStrip1;
-        private Label label1;
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem mnuCerrarSesion;
         private ToolStripMenuItem mnuSalir;

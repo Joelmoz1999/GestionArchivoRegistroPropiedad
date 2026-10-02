@@ -265,7 +265,8 @@
             Controls.Add(txtBuscarCodigo);
             Controls.Add(lblBuscar);
             Name = "ModificarLibroForm";
-            Text = "ModificarLibroForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Modificar Libro";
             Load += ModificarLibroForm_Load;
             grpEdicion.ResumeLayout(false);
             grpEdicion.PerformLayout();

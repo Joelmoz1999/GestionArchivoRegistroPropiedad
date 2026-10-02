@@ -150,7 +150,8 @@
             Controls.Add(lblFuncionario);
             Controls.Add(lblEstado);
             Name = "HistorialCustodiasForm";
-            Text = "HistorialCustodiasForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Historial Custodias";
             Load += HistorialCustodiasForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();
             ResumeLayout(false);

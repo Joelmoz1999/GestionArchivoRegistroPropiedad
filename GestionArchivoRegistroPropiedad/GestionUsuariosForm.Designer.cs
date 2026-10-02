@@ -312,7 +312,8 @@
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
             Name = "GestionUsuariosForm";
-            Text = "GestionUsuariosForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestion Usuarios";
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             grpDatos.ResumeLayout(false);
             grpDatos.PerformLayout();

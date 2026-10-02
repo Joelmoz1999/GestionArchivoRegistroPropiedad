@@ -207,7 +207,8 @@
             ClientSize = new Size(1011, 536);
             Controls.Add(splitContainer1);
             Name = "RegistrarPrestamoForm";
-            Text = "RegistrarPrestamoForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Registrar Prestamo";
             Load += RegistrarPrestamoForm_Load_1;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();

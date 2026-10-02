@@ -111,7 +111,8 @@
             Controls.Add(lblContraseña);
             Controls.Add(lblUsuario);
             Name = "LoginForm";
-            Text = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Iniciar Sesión";
             ResumeLayout(false);
             PerformLayout();
         }

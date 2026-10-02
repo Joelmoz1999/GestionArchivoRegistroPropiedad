@@ -45,7 +45,7 @@
             txtObservaciones.Name = "txtObservaciones";
             txtObservaciones.Size = new Size(376, 23);
             txtObservaciones.TabIndex = 13;
-            txtObservaciones.TextChanged += this.txtObservaciones_TextChanged;
+            txtObservaciones.TextChanged += txtObservaciones_TextChanged;
             // 
             // txtBuscarCodigo
             // 
@@ -53,7 +53,7 @@
             txtBuscarCodigo.Name = "txtBuscarCodigo";
             txtBuscarCodigo.Size = new Size(100, 23);
             txtBuscarCodigo.TabIndex = 12;
-            txtBuscarCodigo.TextChanged += this.txtBuscarCodigo_TextChanged;
+            txtBuscarCodigo.TextChanged += txtBuscarCodigo_TextChanged;
             // 
             // lblObservaciones
             // 
@@ -63,7 +63,7 @@
             lblObservaciones.Size = new Size(166, 15);
             lblObservaciones.TabIndex = 11;
             lblObservaciones.Text = "Observaciones de Devolución:";
-            lblObservaciones.Click += this.lblObservaciones_Click;
+            lblObservaciones.Click += lblObservaciones_Click;
             // 
             // lblInfo
             // 
@@ -72,7 +72,7 @@
             lblInfo.Name = "lblInfo";
             lblInfo.Size = new Size(0, 15);
             lblInfo.TabIndex = 10;
-            lblInfo.Click += this.lblInfo_Click;
+            lblInfo.Click += lblInfo_Click;
             // 
             // lblBuscar
             // 
@@ -82,7 +82,7 @@
             lblBuscar.Size = new Size(159, 15);
             lblBuscar.TabIndex = 9;
             lblBuscar.Text = "Buscar por Código de Barras:";
-            lblBuscar.Click += this.lblBuscar_Click;
+            lblBuscar.Click += lblBuscar_Click;
             // 
             // btnRegistrar
             // 
@@ -93,7 +93,7 @@
             btnRegistrar.TabIndex = 8;
             btnRegistrar.Text = "Registrar Devolución";
             btnRegistrar.UseVisualStyleBackColor = true;
-            btnRegistrar.Click += this.btnRegistrarDevolucion_Click;
+            btnRegistrar.Click += btnRegistrarDevolucion_Click;
             // 
             // btnBuscar
             // 
@@ -130,7 +130,8 @@
             Controls.Add(btnRegistrar);
             Controls.Add(btnBuscar);
             Name = "RegistrarDevolucionForm";
-            Text = "RegistrarDevolucionForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Registrar Devolucion";
             Load += RegistrarDevolucionForm_Load;
             ResumeLayout(false);
             PerformLayout();

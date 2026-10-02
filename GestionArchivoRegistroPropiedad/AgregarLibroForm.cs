@@ -87,7 +87,7 @@ namespace GestionArchivoRegistroPropiedad
             int secuencial = _context.Libros.Count(l =>
                 l.TipoLibro == tipo && l.Anio == anio && l.Tomo == tomo) + 1;
 
-            return $"{prefijoTipo}-{anio}-{tomo:D3}-{secuencial:D4}";
+            return $"{prefijoTipo}-{anio}-{tomo:D2}-{secuencial:D3}";
         }
 
         private string GenerarCodigoBarrasUnico(string tipo, int anio, int tomo)
@@ -198,6 +198,8 @@ namespace GestionArchivoRegistroPropiedad
 
                 txtCodigoBarras.Text = codigoBarras;
                 picCodigoBarras.Image = GenerarImagenCodigoBarras(codigoBarras);
+               
+                btnImprimirEtiqueta.Enabled = true;
 
                 MessageBox.Show($"¡Libro guardado correctamente!\n\nCódigo de Barras: {codigoBarras}",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -211,7 +213,7 @@ namespace GestionArchivoRegistroPropiedad
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-          
+
             cmbTipoLibro.SelectedIndex = 0;
             numAnio.Value = DateTime.Now.Year;
             numTomo.Value = 1;
@@ -220,6 +222,103 @@ namespace GestionArchivoRegistroPropiedad
             txtObservacion.Clear();
             txtCodigoBarras.Clear();
             picCodigoBarras.Image = null;
+            btnImprimirEtiqueta.Enabled = false;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCodigoBarras.Text) || picCodigoBarras.Image == null)
+            {
+                MessageBox.Show("Primero debe guardar un libro para tener un código de barras.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Crear el documento para imprimir
+                var printDoc = new System.Drawing.Printing.PrintDocument();
+                printDoc.DocumentName = "Etiqueta de Código de Barras";
+
+                // Capturar los datos antes del evento (para no acceder a controles dentro del evento)
+                string codigo = txtCodigoBarras.Text;
+                string tipo = cmbTipoLibro.SelectedItem?.ToString() ?? "";
+                string anio = numAnio.Value.ToString();
+                string tomo = numTomo.Value.ToString();
+                Image? codigoImagen = picCodigoBarras.Image;
+
+                // Definir el tamaño de la etiqueta (en centésimas de pulgada)
+                // Ejemplo: etiqueta de 5cm x 3cm aprox
+                printDoc.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Etiqueta", 500, 300);
+                printDoc.DefaultPageSettings.Margins = new System.Drawing.Printing.Margins(10, 10, 10, 10);
+
+                printDoc.PrintPage += (s, args) =>
+                {
+                    var g = args.Graphics!;
+                    float x = 10;
+                    float y = 10;
+
+                    using var fontTitulo = new Font("Arial", 8, FontStyle.Bold);
+                    using var fontNormal = new Font("Arial", 7);
+                    using var fontCodigo = new Font("Consolas", 8, FontStyle.Bold);
+                    using var fontEncabezado = new Font("Arial", 7, FontStyle.Bold);
+
+                    // Encabezado
+                    g.DrawString("REGISTRO DE LA PROPIEDAD", fontEncabezado, Brushes.Black, x, y);
+                    y += 15;
+                    g.DrawString("Pedro Vicente Maldonado", fontNormal, Brushes.Black, x, y);
+                    y += 15;
+
+                    // Línea separadora
+                    g.DrawLine(Pens.Black, x, y, x + 470, y);
+                    y += 5;
+
+                    // Datos del libro (una línea)
+                    string linea1 = $"Tipo: {tipo}";
+                    string linea2 = $"Año: {anio}   Tomo: {tomo}";
+                    g.DrawString(linea1, fontNormal, Brushes.Black, x, y);
+                    y += 15;
+                    g.DrawString(linea2, fontNormal, Brushes.Black, x, y);
+                    y += 20;
+
+                    // Imagen del código de barras (centrada)
+                    if (codigoImagen != null)
+                    {
+                        int anchoImg = 300;
+                        int altoImg = 80;
+                        float xCentrado = x + (470 - anchoImg) / 2;
+                        g.DrawImage(codigoImagen, xCentrado, y, anchoImg, altoImg);
+                        y += altoImg + 5;
+                    }
+
+                    // Texto del código (centrado)
+                    SizeF tamTexto = g.MeasureString(codigo, fontCodigo);
+                    float xTexto = x + (470 - tamTexto.Width) / 2;
+                    g.DrawString(codigo, fontCodigo, Brushes.Black, xTexto, y);
+
+                    args.HasMorePages = false;
+                };
+
+                // Mostrar diálogo de impresión
+                using var printDialog = new PrintDialog
+                {
+                    Document = printDoc,
+                    UseEXDialog = true
+                };
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDoc.Print();
+                    MessageBox.Show("Etiqueta enviada a la impresora.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al imprimir: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         
     }
     }

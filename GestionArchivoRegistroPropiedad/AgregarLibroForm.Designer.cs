@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnGenerarVistaPrevia = new Button();
-            btnLimpiar = new Button();
+            btnLimpiarEtiqueta = new Button();
             bntGuardarLibro = new Button();
             picCodigoBarras = new PictureBox();
             txtCodigoBarras = new TextBox();
@@ -46,6 +46,7 @@
             lblAnio = new Label();
             cmbTipoLibro = new ComboBox();
             lblTipo = new Label();
+            btnImprimirEtiqueta = new Button();
             ((System.ComponentModel.ISupportInitialize)picCodigoBarras).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaFin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaIni).BeginInit();
@@ -55,7 +56,7 @@
             // 
             // btnGenerarVistaPrevia
             // 
-            btnGenerarVistaPrevia.Location = new Point(514, 360);
+            btnGenerarVistaPrevia.Location = new Point(593, 401);
             btnGenerarVistaPrevia.Name = "btnGenerarVistaPrevia";
             btnGenerarVistaPrevia.Size = new Size(95, 35);
             btnGenerarVistaPrevia.TabIndex = 71;
@@ -63,19 +64,19 @@
             btnGenerarVistaPrevia.UseVisualStyleBackColor = true;
             btnGenerarVistaPrevia.Click += btnGenerarVistaPrevia_Click;
             // 
-            // btnLimpiar
+            // btnLimpiarEtiqueta
             // 
-            btnLimpiar.Location = new Point(363, 360);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(89, 35);
-            btnLimpiar.TabIndex = 70;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            btnLimpiar.Click += btnLimpiar_Click;
+            btnLimpiarEtiqueta.Location = new Point(462, 402);
+            btnLimpiarEtiqueta.Name = "btnLimpiarEtiqueta";
+            btnLimpiarEtiqueta.Size = new Size(89, 35);
+            btnLimpiarEtiqueta.TabIndex = 70;
+            btnLimpiarEtiqueta.Text = "Limpiar";
+            btnLimpiarEtiqueta.UseVisualStyleBackColor = true;
+            btnLimpiarEtiqueta.Click += btnLimpiar_Click;
             // 
             // bntGuardarLibro
             // 
-            bntGuardarLibro.Location = new Point(210, 359);
+            bntGuardarLibro.Location = new Point(157, 401);
             bntGuardarLibro.Name = "bntGuardarLibro";
             bntGuardarLibro.Size = new Size(99, 36);
             bntGuardarLibro.TabIndex = 69;
@@ -85,7 +86,7 @@
             // 
             // picCodigoBarras
             // 
-            picCodigoBarras.Location = new Point(216, 291);
+            picCodigoBarras.Location = new Point(220, 323);
             picCodigoBarras.Name = "picCodigoBarras";
             picCodigoBarras.Size = new Size(393, 50);
             picCodigoBarras.TabIndex = 68;
@@ -212,13 +213,25 @@
             lblTipo.TabIndex = 54;
             lblTipo.Text = "Tipo de Libro:";
             // 
+            // btnImprimirEtiqueta
+            // 
+            btnImprimirEtiqueta.Enabled = false;
+            btnImprimirEtiqueta.Location = new Point(297, 401);
+            btnImprimirEtiqueta.Name = "btnImprimirEtiqueta";
+            btnImprimirEtiqueta.Size = new Size(95, 35);
+            btnImprimirEtiqueta.TabIndex = 73;
+            btnImprimirEtiqueta.Text = "Imprimir";
+            btnImprimirEtiqueta.UseVisualStyleBackColor = true;
+            btnImprimirEtiqueta.Click += button1_Click;
+            // 
             // AgregarLibroForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnImprimirEtiqueta);
             Controls.Add(btnGenerarVistaPrevia);
-            Controls.Add(btnLimpiar);
+            Controls.Add(btnLimpiarEtiqueta);
             Controls.Add(bntGuardarLibro);
             Controls.Add(picCodigoBarras);
             Controls.Add(txtCodigoBarras);
@@ -236,7 +249,8 @@
             Controls.Add(cmbTipoLibro);
             Controls.Add(lblTipo);
             Name = "AgregarLibroForm";
-            Text = "AgregarLibroForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Agregar Libro";
             Load += AgregarLibroForm_Load;
             ((System.ComponentModel.ISupportInitialize)picCodigoBarras).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaFin).EndInit();
@@ -250,7 +264,7 @@
         #endregion
 
         private Button btnGenerarVistaPrevia;
-        private Button btnLimpiar;
+        private Button btnLimpiarEtiqueta;
         private Button bntGuardarLibro;
         private PictureBox picCodigoBarras;
         private TextBox txtCodigoBarras;
@@ -267,5 +281,6 @@
         private Label lblAnio;
         private ComboBox cmbTipoLibro;
         private Label lblTipo;
+        private Button btnImprimirEtiqueta;
     }
 }
