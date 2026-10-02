@@ -35,13 +35,16 @@ namespace GestionArchivoRegistroPropiedad
         private void AplicarPermisosPorRol()
         {
             // Los formularios de Mantenimiento solo son visibles para el Administrador
-            mnuGestionLibros.Visible = SesionActual.EsAdministrador;
             mnuGestionFuncionarios.Visible = SesionActual.EsAdministrador;
             mnuGestionUsuarios.Visible = SesionActual.EsAdministrador;
-
+            mnuMantenimiento.Visible = SesionActual.EsEncargadoArchivo;
+            mnuMantenimiento.Visible = SesionActual.EsAdministrador;
+            mnuGestionUsuarios.Visible = SesionActual.EsAdministrador;
             // Custodia y Reportes son visibles para ambos roles
             mnuCustodia.Visible = true;
             mnuReportes.Visible = true;
+            mnuAgregarLibro.Visible = true;
+            mnuModificarLibro.Visible = true;
         }
 
         private void mnuCerrarSesion_Click_1(object sender, EventArgs e)
@@ -69,11 +72,7 @@ namespace GestionArchivoRegistroPropiedad
         }
 
         // Los siguientes eventos los dejamos listos para los próximos pasos:
-        private void mnuGestionLibros_Click_1(object sender, EventArgs e)
-        {
-            var formLibros = new GestionLibrosForm(_context);
-            formLibros.ShowDialog();
-        }
+
 
         private void mnuGestionFuncionarios_Click_1(object sender, EventArgs e)
         {
@@ -83,18 +82,61 @@ namespace GestionArchivoRegistroPropiedad
 
         private void mnuGestionUsuarios_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Módulo de Usuarios (Próximamente).", "Próximamente");
+            var form = new GestionUsuariosForm(_context);
+            form.ShowDialog();
         }
 
         private void mnuCustodia_Click_1(object sender, EventArgs e)
         {
-            var formCustodia = new GestionCustodiaForm(_context);
-            formCustodia.ShowDialog();
+            var form = new RegistrarPrestamoForm(_context);
+            form.ShowDialog();
         }
 
         private void mnuReportes_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Módulo de Reportes (Paso 6).", "Próximamente");
+            var form = new ReporteLibrosForm(_context);
+            form.ShowDialog();
         }
+
+        private void reporteDeCustodiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var form = new ReporteCustodiasForm(_context);
+            form.ShowDialog();
+
+        }
+
+        private void agregarLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new AgregarLibroForm(_context);
+            form.ShowDialog();
+        }
+
+        private void modificarLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new ModificarLibroForm(_context);
+            form.ShowDialog();
+        }
+
+        private void eliminarLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new EliminarLibroForm(_context);
+            form.ShowDialog();
+        }
+
+        private void registrarDevoluciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new RegistrarDevolucionForm(_context);
+            form.ShowDialog();
+
+        }
+
+        private void historialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HistorialCustodiasForm(_context);
+            form.ShowDialog();
+        }
+
+
     }
 }

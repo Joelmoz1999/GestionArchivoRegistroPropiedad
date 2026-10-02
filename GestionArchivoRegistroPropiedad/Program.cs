@@ -27,9 +27,17 @@ namespace GestionArchivoRegistroPropiedad
                     services.AddTransient<LoginForm>();
                     services.AddTransient<MenuPrincipalForm>();
                     // services.AddTransient<Form1>(); // Ya no lo usamos
-                    services.AddTransient<GestionLibrosForm>();
+                    services.AddTransient<AgregarLibroForm>();
+                    services.AddTransient<ModificarLibroForm>();
+                    services.AddTransient<EliminarLibroForm>();
                     services.AddTransient<GestionFuncionariosForm>();
-                    services.AddTransient<GestionCustodiaForm>();
+                    services.AddTransient<ReporteLibrosForm>();
+                    services.AddTransient<ReporteCustodiasForm>();
+                    services.AddTransient<RegistrarPrestamoForm>();
+                    services.AddTransient<RegistrarDevolucionForm>();
+                    services.AddTransient<HistorialCustodiasForm>();
+                    services.AddTransient<GestionUsuariosForm>();
+
                 })
                 .Build();
 
