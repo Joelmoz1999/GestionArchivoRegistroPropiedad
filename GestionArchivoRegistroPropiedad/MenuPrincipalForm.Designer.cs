@@ -49,7 +49,6 @@
             reportesToolStripMenuItem = new ToolStripMenuItem();
             mnuReportes = new ToolStripMenuItem();
             reporteDeCustodiasToolStripMenuItem = new ToolStripMenuItem();
-            reporteDeFuncionariosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             panel1 = new Panel();
             menuStrip1.SuspendLayout();
@@ -102,21 +101,21 @@
             // mnuAgregarLibro
             // 
             mnuAgregarLibro.Name = "mnuAgregarLibro";
-            mnuAgregarLibro.Size = new Size(155, 22);
+            mnuAgregarLibro.Size = new Size(180, 22);
             mnuAgregarLibro.Text = "Agregar Libro";
             mnuAgregarLibro.Click += agregarLibroToolStripMenuItem_Click;
             // 
             // mnuModificarLibro
             // 
             mnuModificarLibro.Name = "mnuModificarLibro";
-            mnuModificarLibro.Size = new Size(155, 22);
+            mnuModificarLibro.Size = new Size(180, 22);
             mnuModificarLibro.Text = "Modificar Libro";
             mnuModificarLibro.Click += modificarLibroToolStripMenuItem_Click;
             // 
             // eliminarLibroToolStripMenuItem
             // 
             eliminarLibroToolStripMenuItem.Name = "eliminarLibroToolStripMenuItem";
-            eliminarLibroToolStripMenuItem.Size = new Size(155, 22);
+            eliminarLibroToolStripMenuItem.Size = new Size(180, 22);
             eliminarLibroToolStripMenuItem.Text = "Eliminar Libro";
             eliminarLibroToolStripMenuItem.Click += eliminarLibroToolStripMenuItem_Click;
             // 
@@ -178,7 +177,7 @@
             // 
             // reportesToolStripMenuItem
             // 
-            reportesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuReportes, reporteDeCustodiasToolStripMenuItem, reporteDeFuncionariosToolStripMenuItem });
+            reportesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mnuReportes, reporteDeCustodiasToolStripMenuItem });
             reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             reportesToolStripMenuItem.Size = new Size(65, 20);
             reportesToolStripMenuItem.Text = "Reportes";
@@ -186,22 +185,16 @@
             // mnuReportes
             // 
             mnuReportes.Name = "mnuReportes";
-            mnuReportes.Size = new Size(202, 22);
+            mnuReportes.Size = new Size(186, 22);
             mnuReportes.Text = "Reporte de Libros";
             mnuReportes.Click += mnuReportes_Click_1;
             // 
             // reporteDeCustodiasToolStripMenuItem
             // 
             reporteDeCustodiasToolStripMenuItem.Name = "reporteDeCustodiasToolStripMenuItem";
-            reporteDeCustodiasToolStripMenuItem.Size = new Size(202, 22);
+            reporteDeCustodiasToolStripMenuItem.Size = new Size(186, 22);
             reporteDeCustodiasToolStripMenuItem.Text = "Reporte de Custodias";
             reporteDeCustodiasToolStripMenuItem.Click += reporteDeCustodiasToolStripMenuItem_Click;
-            // 
-            // reporteDeFuncionariosToolStripMenuItem
-            // 
-            reporteDeFuncionariosToolStripMenuItem.Name = "reporteDeFuncionariosToolStripMenuItem";
-            reporteDeFuncionariosToolStripMenuItem.Size = new Size(202, 22);
-            reporteDeFuncionariosToolStripMenuItem.Text = "Reporte de Funcionarios";
             // 
             // statusStrip1
             // 
@@ -236,7 +229,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestión de Archivo - Registro de la Propiedad del Cantón Pedro Vicente Maldonado";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Gestión de Archivo ";
             Load += MenuPrincipalForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -260,7 +253,6 @@
         private ToolStripMenuItem reportesToolStripMenuItem;
         private ToolStripMenuItem mnuReportes;
         private ToolStripMenuItem reporteDeCustodiasToolStripMenuItem;
-        private ToolStripMenuItem reporteDeFuncionariosToolStripMenuItem;
         private ToolStripMenuItem mnuAgregarLibro;
         private ToolStripMenuItem mnuModificarLibro;
         private ToolStripMenuItem eliminarLibroToolStripMenuItem;

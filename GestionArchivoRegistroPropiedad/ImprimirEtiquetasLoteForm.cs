@@ -103,14 +103,14 @@ namespace GestionArchivoRegistroPropiedad
             dgvLibros.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "PartidaInicial",
-                HeaderText = "P. Inicial",
+                HeaderText = "F. Inicial",
                 ReadOnly = true
             });
 
             dgvLibros.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "PartidaFinal",
-                HeaderText = "P. Final",
+                HeaderText = "F. Final",
                 ReadOnly = true
             });
         }
@@ -241,8 +241,8 @@ namespace GestionArchivoRegistroPropiedad
                             Tipo = row.Cells["TipoLibro"].Value?.ToString() ?? "",
                             Anio = row.Cells["Anio"].Value?.ToString() ?? "",
                             Tomo = row.Cells["Tomo"].Value?.ToString() ?? "",
-                            PartidaInicial = row.Cells["PartidaInicial"].Value?.ToString() ?? "",
-                            PartidaFinal = row.Cells["PartidaFinal"].Value?.ToString() ?? ""
+                            PartidaInicial = row.Cells["FolioInicial"].Value?.ToString() ?? "",
+                            PartidaFinal = row.Cells["FolioFinal"].Value?.ToString() ?? ""
                         };
 
                         etiqueta.ImagenCodigo = GenerarImagenCodigoBarras(etiqueta.Codigo);
@@ -379,6 +379,11 @@ namespace GestionArchivoRegistroPropiedad
         private void lblTotalSeleccionados_Click(object sender, EventArgs e) { }
 
         private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

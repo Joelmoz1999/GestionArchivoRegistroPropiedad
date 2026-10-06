@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarLibroForm));
             btnGenerarVistaPrevia = new Button();
             btnLimpiarEtiqueta = new Button();
             bntGuardarLibro = new Button();
@@ -47,6 +48,7 @@
             cmbTipoLibro = new ComboBox();
             lblTipo = new Label();
             btnImprimirEtiqueta = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)picCodigoBarras).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaFin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaIni).BeginInit();
@@ -56,9 +58,9 @@
             // 
             // btnGenerarVistaPrevia
             // 
-            btnGenerarVistaPrevia.Location = new Point(593, 401);
+            btnGenerarVistaPrevia.Location = new Point(484, 187);
             btnGenerarVistaPrevia.Name = "btnGenerarVistaPrevia";
-            btnGenerarVistaPrevia.Size = new Size(95, 35);
+            btnGenerarVistaPrevia.Size = new Size(94, 39);
             btnGenerarVistaPrevia.TabIndex = 71;
             btnGenerarVistaPrevia.Text = "Vista Previa Código";
             btnGenerarVistaPrevia.UseVisualStyleBackColor = true;
@@ -66,9 +68,9 @@
             // 
             // btnLimpiarEtiqueta
             // 
-            btnLimpiarEtiqueta.Location = new Point(462, 402);
+            btnLimpiarEtiqueta.Location = new Point(484, 247);
             btnLimpiarEtiqueta.Name = "btnLimpiarEtiqueta";
-            btnLimpiarEtiqueta.Size = new Size(89, 35);
+            btnLimpiarEtiqueta.Size = new Size(94, 23);
             btnLimpiarEtiqueta.TabIndex = 70;
             btnLimpiarEtiqueta.Text = "Limpiar";
             btnLimpiarEtiqueta.UseVisualStyleBackColor = true;
@@ -76,9 +78,9 @@
             // 
             // bntGuardarLibro
             // 
-            bntGuardarLibro.Location = new Point(157, 401);
+            bntGuardarLibro.Location = new Point(246, 297);
             bntGuardarLibro.Name = "bntGuardarLibro";
-            bntGuardarLibro.Size = new Size(99, 36);
+            bntGuardarLibro.Size = new Size(88, 27);
             bntGuardarLibro.TabIndex = 69;
             bntGuardarLibro.Text = "Guardar Libro";
             bntGuardarLibro.UseVisualStyleBackColor = true;
@@ -86,30 +88,30 @@
             // 
             // picCodigoBarras
             // 
-            picCodigoBarras.Location = new Point(220, 323);
+            picCodigoBarras.Location = new Point(149, 187);
             picCodigoBarras.Name = "picCodigoBarras";
-            picCodigoBarras.Size = new Size(393, 50);
+            picCodigoBarras.Size = new Size(319, 40);
             picCodigoBarras.TabIndex = 68;
             picCodigoBarras.TabStop = false;
             // 
             // txtCodigoBarras
             // 
-            txtCodigoBarras.Location = new Point(167, 247);
+            txtCodigoBarras.Location = new Point(255, 248);
             txtCodigoBarras.Name = "txtCodigoBarras";
             txtCodigoBarras.Size = new Size(213, 23);
             txtCodigoBarras.TabIndex = 67;
             // 
             // txtObservacion
             // 
-            txtObservacion.Location = new Point(147, 194);
+            txtObservacion.Location = new Point(100, 149);
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(554, 23);
+            txtObservacion.Size = new Size(555, 23);
             txtObservacion.TabIndex = 66;
             // 
             // lblObservacion
             // 
             lblObservacion.AutoSize = true;
-            lblObservacion.Location = new Point(61, 194);
+            lblObservacion.Location = new Point(18, 149);
             lblObservacion.Name = "lblObservacion";
             lblObservacion.Size = new Size(76, 15);
             lblObservacion.TabIndex = 65;
@@ -118,7 +120,7 @@
             // lblCodigoBarras
             // 
             lblCodigoBarras.AutoSize = true;
-            lblCodigoBarras.Location = new Point(61, 247);
+            lblCodigoBarras.Location = new Point(149, 251);
             lblCodigoBarras.Name = "lblCodigoBarras";
             lblCodigoBarras.Size = new Size(100, 15);
             lblCodigoBarras.TabIndex = 64;
@@ -126,50 +128,50 @@
             // 
             // numPartidaFin
             // 
-            numPartidaFin.Location = new Point(568, 135);
+            numPartidaFin.Location = new Point(555, 105);
             numPartidaFin.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numPartidaFin.Name = "numPartidaFin";
-            numPartidaFin.Size = new Size(120, 23);
+            numPartidaFin.Size = new Size(74, 23);
             numPartidaFin.TabIndex = 63;
             // 
             // lblPartidaFin
             // 
             lblPartidaFin.AutoSize = true;
-            lblPartidaFin.Location = new Point(462, 135);
+            lblPartidaFin.Location = new Point(469, 113);
             lblPartidaFin.Name = "lblPartidaFin";
-            lblPartidaFin.Size = new Size(75, 15);
+            lblPartidaFin.Size = new Size(64, 15);
             lblPartidaFin.TabIndex = 62;
-            lblPartidaFin.Text = "Partida Final:";
+            lblPartidaFin.Text = "Folio Final:";
             // 
             // numPartidaIni
             // 
-            numPartidaIni.Location = new Point(189, 132);
+            numPartidaIni.Location = new Point(555, 76);
             numPartidaIni.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numPartidaIni.Name = "numPartidaIni";
-            numPartidaIni.Size = new Size(120, 23);
+            numPartidaIni.Size = new Size(74, 23);
             numPartidaIni.TabIndex = 61;
             // 
             // lblPartidaIni
             // 
             lblPartidaIni.AutoSize = true;
-            lblPartidaIni.Location = new Point(61, 135);
+            lblPartidaIni.Location = new Point(469, 84);
             lblPartidaIni.Name = "lblPartidaIni";
-            lblPartidaIni.Size = new Size(81, 15);
+            lblPartidaIni.Size = new Size(70, 15);
             lblPartidaIni.TabIndex = 60;
-            lblPartidaIni.Text = "Partida Inicial:";
+            lblPartidaIni.Text = "Folio Inicial:";
             // 
             // numTomo
             // 
-            numTomo.Location = new Point(620, 59);
+            numTomo.Location = new Point(378, 81);
             numTomo.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numTomo.Name = "numTomo";
-            numTomo.Size = new Size(120, 23);
+            numTomo.Size = new Size(66, 23);
             numTomo.TabIndex = 59;
             // 
             // lblTomo
             // 
             lblTomo.AutoSize = true;
-            lblTomo.Location = new Point(554, 64);
+            lblTomo.Location = new Point(331, 82);
             lblTomo.Name = "lblTomo";
             lblTomo.Size = new Size(41, 15);
             lblTomo.TabIndex = 58;
@@ -177,18 +179,18 @@
             // 
             // numAnio
             // 
-            numAnio.Location = new Point(363, 56);
+            numAnio.Location = new Point(257, 81);
             numAnio.Maximum = new decimal(new int[] { 2050, 0, 0, 0 });
             numAnio.Minimum = new decimal(new int[] { 2000, 0, 0, 0 });
             numAnio.Name = "numAnio";
-            numAnio.Size = new Size(120, 23);
+            numAnio.Size = new Size(50, 23);
             numAnio.TabIndex = 57;
             numAnio.Value = new decimal(new int[] { 2000, 0, 0, 0 });
             // 
             // lblAnio
             // 
             lblAnio.AutoSize = true;
-            lblAnio.Location = new Point(314, 64);
+            lblAnio.Location = new Point(219, 87);
             lblAnio.Name = "lblAnio";
             lblAnio.Size = new Size(32, 15);
             lblAnio.TabIndex = 56;
@@ -199,15 +201,15 @@
             cmbTipoLibro.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoLibro.FormattingEnabled = true;
             cmbTipoLibro.Items.AddRange(new object[] { "Propiedad", "Sentencias y Demandas", "Hipotecas", "Mercantil" });
-            cmbTipoLibro.Location = new Point(147, 56);
+            cmbTipoLibro.Location = new Point(89, 81);
             cmbTipoLibro.Name = "cmbTipoLibro";
-            cmbTipoLibro.Size = new Size(121, 23);
+            cmbTipoLibro.Size = new Size(124, 23);
             cmbTipoLibro.TabIndex = 55;
             // 
             // lblTipo
             // 
             lblTipo.AutoSize = true;
-            lblTipo.Location = new Point(61, 59);
+            lblTipo.Location = new Point(12, 85);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new Size(80, 15);
             lblTipo.TabIndex = 54;
@@ -216,19 +218,31 @@
             // btnImprimirEtiqueta
             // 
             btnImprimirEtiqueta.Enabled = false;
-            btnImprimirEtiqueta.Location = new Point(297, 401);
+            btnImprimirEtiqueta.Location = new Point(350, 297);
             btnImprimirEtiqueta.Name = "btnImprimirEtiqueta";
-            btnImprimirEtiqueta.Size = new Size(95, 35);
+            btnImprimirEtiqueta.Size = new Size(85, 26);
             btnImprimirEtiqueta.TabIndex = 73;
             btnImprimirEtiqueta.Text = "Imprimir";
             btnImprimirEtiqueta.UseVisualStyleBackColor = true;
             btnImprimirEtiqueta.Click += button1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(246, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(131, 21);
+            label1.TabIndex = 74;
+            label1.Text = "AGREGAR LIBRO ";
+            label1.Click += label1_Click;
+            // 
             // AgregarLibroForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(658, 354);
+            Controls.Add(label1);
             Controls.Add(btnImprimirEtiqueta);
             Controls.Add(btnGenerarVistaPrevia);
             Controls.Add(btnLimpiarEtiqueta);
@@ -248,9 +262,10 @@
             Controls.Add(lblAnio);
             Controls.Add(cmbTipoLibro);
             Controls.Add(lblTipo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AgregarLibroForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Agregar Libro";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Agregar Libro";
             Load += AgregarLibroForm_Load;
             ((System.ComponentModel.ISupportInitialize)picCodigoBarras).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPartidaFin).EndInit();
@@ -282,5 +297,6 @@
         private ComboBox cmbTipoLibro;
         private Label lblTipo;
         private Button btnImprimirEtiqueta;
+        private Label label1;
     }
 }

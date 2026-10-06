@@ -143,5 +143,10 @@ namespace GestionArchivoRegistroPropiedad
         private void lblCodigo_Click(object sender, EventArgs e) { }
         private void txtCodigo_TextChanged(object sender, EventArgs e) { }
         private void lblInfo_Click(object sender, EventArgs e) { }
+
+        private void lblCodigo_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

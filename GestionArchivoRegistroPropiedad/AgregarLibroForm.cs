@@ -312,5 +312,10 @@ namespace GestionArchivoRegistroPropiedad
         private void lblCodigoBarras_Click(object sender, EventArgs e) { }
         private void txtCodigoBarras_TextChanged(object sender, EventArgs e) { }
         private void picCodigoBarras_Click(object sender, EventArgs e) { }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

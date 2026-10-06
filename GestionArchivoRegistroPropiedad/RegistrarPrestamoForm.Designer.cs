@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarPrestamoForm));
             splitContainer1 = new SplitContainer();
             dgvLibrosDisponibles = new DataGridView();
             btnFiltrar = new Button();
@@ -42,6 +43,8 @@
             lblFechaPrestamo = new Label();
             lblFuncionario = new Label();
             lblInfoLibro = new Label();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +60,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(label2);
             splitContainer1.Panel1.Controls.Add(dgvLibrosDisponibles);
             splitContainer1.Panel1.Controls.Add(btnFiltrar);
             splitContainer1.Panel1.Controls.Add(cmbFiltrarTipo);
@@ -65,6 +69,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(label1);
             splitContainer1.Panel2.Controls.Add(btnLimpiarPrestamo);
             splitContainer1.Panel2.Controls.Add(btnRegistrarPrestamo);
             splitContainer1.Panel2.Controls.Add(txtObservaciones);
@@ -75,7 +80,7 @@
             splitContainer1.Panel2.Controls.Add(lblFuncionario);
             splitContainer1.Panel2.Controls.Add(lblInfoLibro);
             splitContainer1.Size = new Size(1011, 536);
-            splitContainer1.SplitterDistance = 481;
+            splitContainer1.SplitterDistance = 611;
             splitContainer1.TabIndex = 0;
             // 
             // dgvLibrosDisponibles
@@ -85,13 +90,13 @@
             dgvLibrosDisponibles.Name = "dgvLibrosDisponibles";
             dgvLibrosDisponibles.ReadOnly = true;
             dgvLibrosDisponibles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLibrosDisponibles.Size = new Size(478, 387);
+            dgvLibrosDisponibles.Size = new Size(608, 387);
             dgvLibrosDisponibles.TabIndex = 7;
             dgvLibrosDisponibles.CellContentClick += dgvLibrosDisponibles_CellContentClick;
             // 
             // btnFiltrar
             // 
-            btnFiltrar.Location = new Point(357, 44);
+            btnFiltrar.Location = new Point(365, 87);
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Size = new Size(86, 31);
             btnFiltrar.TabIndex = 6;
@@ -103,7 +108,7 @@
             // 
             cmbFiltrarTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarTipo.FormattingEnabled = true;
-            cmbFiltrarTipo.Location = new Point(157, 49);
+            cmbFiltrarTipo.Location = new Point(165, 92);
             cmbFiltrarTipo.Name = "cmbFiltrarTipo";
             cmbFiltrarTipo.Size = new Size(178, 23);
             cmbFiltrarTipo.TabIndex = 5;
@@ -111,7 +116,7 @@
             // lblFiltrarTipo
             // 
             lblFiltrarTipo.AutoSize = true;
-            lblFiltrarTipo.Location = new Point(38, 52);
+            lblFiltrarTipo.Location = new Point(46, 95);
             lblFiltrarTipo.Name = "lblFiltrarTipo";
             lblFiltrarTipo.Size = new Size(88, 15);
             lblFiltrarTipo.TabIndex = 4;
@@ -119,9 +124,9 @@
             // 
             // btnLimpiarPrestamo
             // 
-            btnLimpiarPrestamo.Location = new Point(288, 375);
+            btnLimpiarPrestamo.Location = new Point(247, 348);
             btnLimpiarPrestamo.Name = "btnLimpiarPrestamo";
-            btnLimpiarPrestamo.Size = new Size(93, 47);
+            btnLimpiarPrestamo.Size = new Size(79, 45);
             btnLimpiarPrestamo.TabIndex = 19;
             btnLimpiarPrestamo.Text = "Limpiar";
             btnLimpiarPrestamo.UseVisualStyleBackColor = true;
@@ -131,9 +136,9 @@
             // 
             btnRegistrarPrestamo.BackColor = Color.YellowGreen;
             btnRegistrarPrestamo.Enabled = false;
-            btnRegistrarPrestamo.Location = new Point(136, 375);
+            btnRegistrarPrestamo.Location = new Point(99, 348);
             btnRegistrarPrestamo.Name = "btnRegistrarPrestamo";
-            btnRegistrarPrestamo.Size = new Size(99, 47);
+            btnRegistrarPrestamo.Size = new Size(100, 45);
             btnRegistrarPrestamo.TabIndex = 18;
             btnRegistrarPrestamo.Text = "Registrar Préstamo";
             btnRegistrarPrestamo.UseVisualStyleBackColor = false;
@@ -141,15 +146,15 @@
             // 
             // txtObservaciones
             // 
-            txtObservaciones.Location = new Point(183, 296);
+            txtObservaciones.Location = new Point(130, 293);
             txtObservaciones.Multiline = true;
             txtObservaciones.Name = "txtObservaciones";
-            txtObservaciones.Size = new Size(277, 23);
+            txtObservaciones.Size = new Size(238, 23);
             txtObservaciones.TabIndex = 17;
             // 
             // dtpFechaPrestamo
             // 
-            dtpFechaPrestamo.Location = new Point(183, 235);
+            dtpFechaPrestamo.Location = new Point(128, 235);
             dtpFechaPrestamo.Name = "dtpFechaPrestamo";
             dtpFechaPrestamo.Size = new Size(229, 23);
             dtpFechaPrestamo.TabIndex = 16;
@@ -158,15 +163,16 @@
             // 
             cmbFuncionario.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFuncionario.FormattingEnabled = true;
-            cmbFuncionario.Location = new Point(183, 176);
+            cmbFuncionario.Location = new Point(130, 176);
             cmbFuncionario.Name = "cmbFuncionario";
             cmbFuncionario.Size = new Size(121, 23);
             cmbFuncionario.TabIndex = 15;
+            cmbFuncionario.SelectedIndexChanged += cmbFuncionario_SelectedIndexChanged_1;
             // 
             // lblObservaciones
             // 
             lblObservaciones.AutoSize = true;
-            lblObservaciones.Location = new Point(79, 296);
+            lblObservaciones.Location = new Point(35, 296);
             lblObservaciones.Name = "lblObservaciones";
             lblObservaciones.Size = new Size(87, 15);
             lblObservaciones.TabIndex = 14;
@@ -175,7 +181,7 @@
             // lblFechaPrestamo
             // 
             lblFechaPrestamo.AutoSize = true;
-            lblFechaPrestamo.Location = new Point(67, 241);
+            lblFechaPrestamo.Location = new Point(12, 241);
             lblFechaPrestamo.Name = "lblFechaPrestamo";
             lblFechaPrestamo.Size = new Size(110, 15);
             lblFechaPrestamo.TabIndex = 13;
@@ -184,7 +190,7 @@
             // lblFuncionario
             // 
             lblFuncionario.AutoSize = true;
-            lblFuncionario.Location = new Point(93, 176);
+            lblFuncionario.Location = new Point(49, 176);
             lblFuncionario.Name = "lblFuncionario";
             lblFuncionario.Size = new Size(73, 15);
             lblFuncionario.TabIndex = 12;
@@ -194,11 +200,33 @@
             // 
             lblInfoLibro.AutoSize = true;
             lblInfoLibro.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblInfoLibro.Location = new Point(174, 115);
+            lblInfoLibro.Location = new Point(109, 123);
             lblInfoLibro.Name = "lblInfoLibro";
             lblInfoLibro.Size = new Size(142, 15);
             lblInfoLibro.TabIndex = 11;
             lblInfoLibro.Text = "📖 Sin libro seleccionado\"";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(118, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(177, 21);
+            label1.TabIndex = 75;
+            label1.Text = "REGISTRAR PRESTAMO ";
+            label1.Click += label1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(227, 42);
+            label2.Name = "label2";
+            label2.Size = new Size(116, 21);
+            label2.TabIndex = 76;
+            label2.Text = "BUSCAR LIBRO";
+            label2.Click += label2_Click;
             // 
             // RegistrarPrestamoForm
             // 
@@ -206,9 +234,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1011, 536);
             Controls.Add(splitContainer1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RegistrarPrestamoForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registrar Prestamo";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Registrar Prestamo";
             Load += RegistrarPrestamoForm_Load_1;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
@@ -236,5 +265,7 @@
         private Label lblFechaPrestamo;
         private Label lblFuncionario;
         private Label lblInfoLibro;
+        private Label label1;
+        private Label label2;
     }
 }

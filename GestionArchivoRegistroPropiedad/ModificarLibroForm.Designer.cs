@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarLibroForm));
             btnCancelarEdicion = new Button();
             btnActualizar = new Button();
             grpEdicion = new GroupBox();
@@ -48,6 +49,7 @@
             btnBuscar = new Button();
             txtBuscarCodigo = new TextBox();
             lblBuscar = new Label();
+            label1 = new Label();
             grpEdicion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numEditTomo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numEditAnio).BeginInit();
@@ -58,9 +60,9 @@
             // 
             // btnCancelarEdicion
             // 
-            btnCancelarEdicion.Location = new Point(374, 378);
+            btnCancelarEdicion.Location = new Point(440, 364);
             btnCancelarEdicion.Name = "btnCancelarEdicion";
-            btnCancelarEdicion.Size = new Size(96, 35);
+            btnCancelarEdicion.Size = new Size(98, 33);
             btnCancelarEdicion.TabIndex = 16;
             btnCancelarEdicion.Text = "Cancelar";
             btnCancelarEdicion.UseVisualStyleBackColor = true;
@@ -68,9 +70,9 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(202, 378);
+            btnActualizar.Location = new Point(322, 364);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(122, 33);
+            btnActualizar.Size = new Size(107, 33);
             btnActualizar.TabIndex = 15;
             btnActualizar.Text = "Actualizar Libro";
             btnActualizar.UseVisualStyleBackColor = true;
@@ -92,24 +94,25 @@
             grpEdicion.Controls.Add(numEditPartidaFin);
             grpEdicion.Location = new Point(6, 228);
             grpEdicion.Name = "grpEdicion";
-            grpEdicion.Size = new Size(789, 132);
+            grpEdicion.Size = new Size(789, 112);
             grpEdicion.TabIndex = 14;
             grpEdicion.TabStop = false;
             grpEdicion.Text = "Modificar Libro Seleccionado";
+            grpEdicion.Enter += grpEdicion_Enter_1;
             // 
             // cmbEditTipo
             // 
             cmbEditTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEditTipo.FormattingEnabled = true;
             cmbEditTipo.Items.AddRange(new object[] { "Propiedad", "Sentencias y Demandas", "Hipotecas", "Mercantil" });
-            cmbEditTipo.Location = new Point(61, 32);
+            cmbEditTipo.Location = new Point(48, 35);
             cmbEditTipo.Name = "cmbEditTipo";
             cmbEditTipo.Size = new Size(121, 23);
             cmbEditTipo.TabIndex = 18;
             // 
             // numEditTomo
             // 
-            numEditTomo.Location = new Point(630, 22);
+            numEditTomo.Location = new Point(429, 28);
             numEditTomo.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditTomo.Name = "numEditTomo";
             numEditTomo.Size = new Size(120, 23);
@@ -117,7 +120,7 @@
             // 
             // numEditAnio
             // 
-            numEditAnio.Location = new Point(350, 27);
+            numEditAnio.Location = new Point(237, 33);
             numEditAnio.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditAnio.Name = "numEditAnio";
             numEditAnio.Size = new Size(120, 23);
@@ -126,7 +129,7 @@
             // lblEditTomo
             // 
             lblEditTomo.AutoSize = true;
-            lblEditTomo.Location = new Point(583, 27);
+            lblEditTomo.Location = new Point(382, 35);
             lblEditTomo.Name = "lblEditTomo";
             lblEditTomo.Size = new Size(41, 15);
             lblEditTomo.TabIndex = 15;
@@ -135,7 +138,7 @@
             // lblEditAnio
             // 
             lblEditAnio.AutoSize = true;
-            lblEditAnio.Location = new Point(297, 30);
+            lblEditAnio.Location = new Point(184, 36);
             lblEditAnio.Name = "lblEditAnio";
             lblEditAnio.Size = new Size(32, 15);
             lblEditAnio.TabIndex = 14;
@@ -143,16 +146,16 @@
             // 
             // txtEditObservacion
             // 
-            txtEditObservacion.Location = new Point(95, 101);
+            txtEditObservacion.Location = new Point(85, 72);
             txtEditObservacion.Multiline = true;
             txtEditObservacion.Name = "txtEditObservacion";
-            txtEditObservacion.Size = new Size(626, 23);
+            txtEditObservacion.Size = new Size(464, 23);
             txtEditObservacion.TabIndex = 13;
             // 
             // lblEditObersacion
             // 
             lblEditObersacion.AutoSize = true;
-            lblEditObersacion.Location = new Point(18, 104);
+            lblEditObersacion.Location = new Point(8, 75);
             lblEditObersacion.Name = "lblEditObersacion";
             lblEditObersacion.Size = new Size(71, 15);
             lblEditObersacion.TabIndex = 12;
@@ -161,15 +164,15 @@
             // lblEditPartidaFin
             // 
             lblEditPartidaFin.AutoSize = true;
-            lblEditPartidaFin.Location = new Point(395, 76);
+            lblEditPartidaFin.Location = new Point(560, 64);
             lblEditPartidaFin.Name = "lblEditPartidaFin";
-            lblEditPartidaFin.Size = new Size(75, 15);
+            lblEditPartidaFin.Size = new Size(64, 15);
             lblEditPartidaFin.TabIndex = 10;
-            lblEditPartidaFin.Text = "Partida Final:";
+            lblEditPartidaFin.Text = "Folio Final:";
             // 
             // numEditPartidaIni
             // 
-            numEditPartidaIni.Location = new Point(237, 72);
+            numEditPartidaIni.Location = new Point(652, 27);
             numEditPartidaIni.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditPartidaIni.Name = "numEditPartidaIni";
             numEditPartidaIni.Size = new Size(120, 23);
@@ -178,11 +181,11 @@
             // lblEditPartidaIni
             // 
             lblEditPartidaIni.AutoSize = true;
-            lblEditPartidaIni.Location = new Point(135, 80);
+            lblEditPartidaIni.Location = new Point(565, 30);
             lblEditPartidaIni.Name = "lblEditPartidaIni";
-            lblEditPartidaIni.Size = new Size(81, 15);
+            lblEditPartidaIni.Size = new Size(70, 15);
             lblEditPartidaIni.TabIndex = 8;
-            lblEditPartidaIni.Text = "Partida Inicial:";
+            lblEditPartidaIni.Text = "Folio Inicial:";
             // 
             // lblEditTipo
             // 
@@ -195,7 +198,7 @@
             // 
             // numEditPartidaFin
             // 
-            numEditPartidaFin.Location = new Point(504, 74);
+            numEditPartidaFin.Location = new Point(652, 56);
             numEditPartidaFin.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditPartidaFin.Name = "numEditPartidaFin";
             numEditPartidaFin.Size = new Size(120, 23);
@@ -217,9 +220,9 @@
             // 
             // btnBuscarTodos
             // 
-            btnBuscarTodos.Location = new Point(628, 40);
+            btnBuscarTodos.Location = new Point(584, 56);
             btnBuscarTodos.Name = "btnBuscarTodos";
-            btnBuscarTodos.Size = new Size(99, 23);
+            btnBuscarTodos.Size = new Size(92, 26);
             btnBuscarTodos.TabIndex = 12;
             btnBuscarTodos.Text = "Mostrar Todos";
             btnBuscarTodos.UseVisualStyleBackColor = true;
@@ -227,9 +230,9 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(524, 40);
+            btnBuscar.Location = new Point(492, 56);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.Size = new Size(86, 26);
             btnBuscar.TabIndex = 11;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -237,7 +240,7 @@
             // 
             // txtBuscarCodigo
             // 
-            txtBuscarCodigo.Location = new Point(217, 37);
+            txtBuscarCodigo.Location = new Point(217, 59);
             txtBuscarCodigo.Name = "txtBuscarCodigo";
             txtBuscarCodigo.Size = new Size(269, 23);
             txtBuscarCodigo.TabIndex = 10;
@@ -245,17 +248,28 @@
             // lblBuscar
             // 
             lblBuscar.AutoSize = true;
-            lblBuscar.Location = new Point(39, 40);
+            lblBuscar.Location = new Point(39, 62);
             lblBuscar.Name = "lblBuscar";
             lblBuscar.Size = new Size(159, 15);
             lblBuscar.TabIndex = 9;
             lblBuscar.Text = "Buscar por Código de Barras:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(328, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(144, 21);
+            label1.TabIndex = 75;
+            label1.Text = "MODIFICAR LIBRO ";
+            // 
             // ModificarLibroForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 414);
+            Controls.Add(label1);
             Controls.Add(btnCancelarEdicion);
             Controls.Add(btnActualizar);
             Controls.Add(grpEdicion);
@@ -264,9 +278,10 @@
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscarCodigo);
             Controls.Add(lblBuscar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ModificarLibroForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Modificar Libro";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Modificar Libro";
             Load += ModificarLibroForm_Load;
             grpEdicion.ResumeLayout(false);
             grpEdicion.PerformLayout();
@@ -301,5 +316,6 @@
         private Button btnBuscar;
         private TextBox txtBuscarCodigo;
         private Label lblBuscar;
+        private Label label1;
     }
 }

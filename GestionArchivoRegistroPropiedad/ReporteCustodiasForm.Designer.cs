@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteCustodiasForm));
             lblEstado = new Label();
             lblFuncionario = new Label();
             lblDesde = new Label();
@@ -41,13 +42,14 @@
             btnGenerar = new Button();
             btnExportarPDF = new Button();
             dgvReporte = new DataGridView();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvReporte).BeginInit();
             SuspendLayout();
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(41, 64);
+            lblEstado.Location = new Point(148, 67);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(45, 15);
             lblEstado.TabIndex = 0;
@@ -56,7 +58,7 @@
             // lblFuncionario
             // 
             lblFuncionario.AutoSize = true;
-            lblFuncionario.Location = new Point(357, 69);
+            lblFuncionario.Location = new Point(464, 72);
             lblFuncionario.Name = "lblFuncionario";
             lblFuncionario.Size = new Size(73, 15);
             lblFuncionario.TabIndex = 1;
@@ -94,7 +96,7 @@
             cmbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEstado.FormattingEnabled = true;
             cmbEstado.Items.AddRange(new object[] { "Todos", "En Custodia", "Devueltos" });
-            cmbEstado.Location = new Point(137, 64);
+            cmbEstado.Location = new Point(212, 67);
             cmbEstado.Name = "cmbEstado";
             cmbEstado.Size = new Size(121, 23);
             cmbEstado.TabIndex = 5;
@@ -104,7 +106,7 @@
             // 
             cmbFuncionario.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFuncionario.FormattingEnabled = true;
-            cmbFuncionario.Location = new Point(436, 66);
+            cmbFuncionario.Location = new Point(543, 69);
             cmbFuncionario.Name = "cmbFuncionario";
             cmbFuncionario.Size = new Size(121, 23);
             cmbFuncionario.TabIndex = 6;
@@ -136,7 +138,7 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(239, 396);
+            btnGenerar.Location = new Point(251, 396);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(103, 31);
             btnGenerar.TabIndex = 10;
@@ -146,7 +148,7 @@
             // 
             // btnExportarPDF
             // 
-            btnExportarPDF.Location = new Point(358, 396);
+            btnExportarPDF.Location = new Point(387, 396);
             btnExportarPDF.Name = "btnExportarPDF";
             btnExportarPDF.Size = new Size(142, 31);
             btnExportarPDF.TabIndex = 11;
@@ -163,11 +165,23 @@
             dgvReporte.TabIndex = 12;
             dgvReporte.CellContentClick += dgvReporte_CellContentClick;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(311, 18);
+            label2.Name = "label2";
+            label2.Size = new Size(184, 21);
+            label2.TabIndex = 77;
+            label2.Text = "REPORTE DE CUSTODIAS";
+            label2.Click += label2_Click;
+            // 
             // ReporteCustodiasForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(dgvReporte);
             Controls.Add(btnExportarPDF);
             Controls.Add(btnGenerar);
@@ -181,8 +195,9 @@
             Controls.Add(lblDesde);
             Controls.Add(lblFuncionario);
             Controls.Add(lblEstado);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReporteCustodiasForm";
-            Text = "ReporteCustodiasForm";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Reporte Custodias";
             ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -203,5 +218,6 @@
         private Button btnGenerar;
         private Button btnExportarPDF;
         private DataGridView dgvReporte;
+        private Label label2;
     }
 }

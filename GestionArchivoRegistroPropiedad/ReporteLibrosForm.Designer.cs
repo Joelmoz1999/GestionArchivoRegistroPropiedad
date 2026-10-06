@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReporteLibrosForm));
             lblTipo = new Label();
             lblHasta = new Label();
             lblDesde = new Label();
@@ -174,8 +175,9 @@
             Controls.Add(lblDesde);
             Controls.Add(lblHasta);
             Controls.Add(lblTipo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReporteLibrosForm";
-            Text = "ReporteLibrosForm";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Reporte Libros";
             Load += ReporteLibrosForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();
             ResumeLayout(false);

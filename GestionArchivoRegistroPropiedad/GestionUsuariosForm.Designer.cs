@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuariosForm));
             lblBuscar = new Label();
             txtBuscar = new TextBox();
             btnBuscar = new Button();
@@ -311,6 +312,7 @@
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBuscar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "GestionUsuariosForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestion Usuarios";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarDevolucionForm));
             txtObservaciones = new TextBox();
             txtBuscarCodigo = new TextBox();
             lblObservaciones = new Label();
@@ -129,9 +130,10 @@
             Controls.Add(lblBuscar);
             Controls.Add(btnRegistrar);
             Controls.Add(btnBuscar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RegistrarDevolucionForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registrar Devolucion";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Registrar Devolucion";
             Load += RegistrarDevolucionForm_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mnuImprimirEtiquetas));
             lblFiltroTipo = new Label();
             lblFiltroCodigo = new Label();
             lblTotalSeleccionados = new Label();
@@ -39,6 +40,7 @@
             btnDeseleccionarTodos = new Button();
             dgvLibros = new DataGridView();
             btnImprimirSeleccionados = new Button();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvLibros).BeginInit();
             SuspendLayout();
             // 
@@ -134,7 +136,6 @@
             dgvLibros.Size = new Size(800, 147);
             dgvLibros.TabIndex = 9;
             dgvLibros.CellContentClick += dgvLibros_CellContentClick;
-            dgvLibros.AutoGenerateColumns = false;
             // 
             // btnImprimirSeleccionados
             // 
@@ -146,11 +147,23 @@
             btnImprimirSeleccionados.UseVisualStyleBackColor = true;
             btnImprimirSeleccionados.Click += btnImprimirSeleccionados_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(302, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(228, 21);
+            label2.TabIndex = 77;
+            label2.Text = "IMPRIMIR CODIGO DE BARRAS";
+            label2.Click += label2_Click;
+            // 
             // mnuImprimirEtiquetas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(btnImprimirSeleccionados);
             Controls.Add(dgvLibros);
             Controls.Add(btnDeseleccionarTodos);
@@ -162,9 +175,10 @@
             Controls.Add(lblTotalSeleccionados);
             Controls.Add(lblFiltroCodigo);
             Controls.Add(lblFiltroTipo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mnuImprimirEtiquetas";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Codigo de Barras";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Codigo de Barras";
             Load += ImprimirEtiquetasLoteForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvLibros).EndInit();
             ResumeLayout(false);
@@ -184,5 +198,6 @@
         private Button btnDeseleccionarTodos;
         private DataGridView dgvLibros;
         private Button btnImprimirSeleccionados;
+        private Label label2;
     }
 }

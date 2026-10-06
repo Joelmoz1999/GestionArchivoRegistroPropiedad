@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mnuGestionTipoLibro));
             lblTitulo = new Label();
             lblAgregar = new Label();
             lblExistentes = new Label();
@@ -43,7 +44,7 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(333, 36);
+            lblTitulo.Location = new Point(145, 23);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(165, 15);
             lblTitulo.TabIndex = 0;
@@ -52,7 +53,7 @@
             // lblAgregar
             // 
             lblAgregar.AutoSize = true;
-            lblAgregar.Location = new Point(179, 89);
+            lblAgregar.Location = new Point(61, 78);
             lblAgregar.Name = "lblAgregar";
             lblAgregar.Size = new Size(127, 15);
             lblAgregar.TabIndex = 1;
@@ -61,7 +62,7 @@
             // lblExistentes
             // 
             lblExistentes.AutoSize = true;
-            lblExistentes.Location = new Point(192, 146);
+            lblExistentes.Location = new Point(74, 135);
             lblExistentes.Name = "lblExistentes";
             lblExistentes.Size = new Size(108, 15);
             lblExistentes.TabIndex = 2;
@@ -69,14 +70,14 @@
             // 
             // txtNuevoTipo
             // 
-            txtNuevoTipo.Location = new Point(312, 86);
+            txtNuevoTipo.Location = new Point(194, 75);
             txtNuevoTipo.Name = "txtNuevoTipo";
             txtNuevoTipo.Size = new Size(148, 23);
             txtNuevoTipo.TabIndex = 3;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(466, 86);
+            btnAgregar.Location = new Point(348, 75);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 4;
@@ -87,14 +88,14 @@
             // lstTipoLibro
             // 
             lstTipoLibro.FormattingEnabled = true;
-            lstTipoLibro.Location = new Point(192, 164);
+            lstTipoLibro.Location = new Point(74, 135);
             lstTipoLibro.Name = "lstTipoLibro";
             lstTipoLibro.Size = new Size(349, 124);
             lstTipoLibro.TabIndex = 5;
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(263, 303);
+            btnEliminar.Location = new Point(145, 292);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(130, 23);
             btnEliminar.TabIndex = 6;
@@ -104,7 +105,7 @@
             // 
             // btnReactivar
             // 
-            btnReactivar.Location = new Point(399, 303);
+            btnReactivar.Location = new Point(281, 292);
             btnReactivar.Name = "btnReactivar";
             btnReactivar.Size = new Size(142, 23);
             btnReactivar.TabIndex = 7;
@@ -114,7 +115,7 @@
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(263, 350);
+            btnCerrar.Location = new Point(145, 339);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(130, 23);
             btnCerrar.TabIndex = 8;
@@ -125,7 +126,7 @@
             // btnEditar
             // 
             btnEditar.Enabled = false;
-            btnEditar.Location = new Point(127, 303);
+            btnEditar.Location = new Point(9, 292);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(130, 23);
             btnEditar.TabIndex = 9;
@@ -137,7 +138,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(496, 389);
             Controls.Add(btnEditar);
             Controls.Add(btnCerrar);
             Controls.Add(btnReactivar);
@@ -148,8 +149,9 @@
             Controls.Add(lblExistentes);
             Controls.Add(lblAgregar);
             Controls.Add(lblTitulo);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mnuGestionTipoLibro";
-            Text = "GestionTiposLibrosForm";
+            Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Gestion Tipos de Libros";
             Load += GestionTiposLibrosForm_Load_1;
             ResumeLayout(false);
             PerformLayout();

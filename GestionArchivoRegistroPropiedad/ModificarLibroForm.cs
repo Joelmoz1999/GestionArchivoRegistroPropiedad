@@ -298,5 +298,10 @@ namespace GestionArchivoRegistroPropiedad
         private void numEditPartidaFin_ValueChanged(object sender, EventArgs e) { }
         private void lblEditObservacion_Click(object sender, EventArgs e) { }
         private void txtEditObservacion_TextChanged(object sender, EventArgs e) { }
+
+        private void grpEdicion_Enter_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

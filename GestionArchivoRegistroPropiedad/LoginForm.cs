@@ -14,7 +14,7 @@ namespace GestionArchivoRegistroPropiedad
         {
             InitializeComponent();
             _context = context;
-           // string hash = BCrypt.Net.BCrypt.HashPassword("Admin123");
+            // string hash = BCrypt.Net.BCrypt.HashPassword("Admin123");
             //MessageBox.Show(hash, "Hash generado - Cópialo");
 
 
@@ -27,7 +27,7 @@ namespace GestionArchivoRegistroPropiedad
         {
 
 
-           
+
 
 
 
@@ -81,6 +81,29 @@ namespace GestionArchivoRegistroPropiedad
             Application.Exit();
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblContraseña_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

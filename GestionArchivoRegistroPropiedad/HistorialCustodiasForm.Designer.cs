@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistorialCustodiasForm));
             dgvHistorial = new DataGridView();
             btnLimpiarFiltros = new Button();
             btnFiltrar = new Button();
@@ -54,7 +55,7 @@
             // 
             // btnLimpiarFiltros
             // 
-            btnLimpiarFiltros.Location = new Point(578, 406);
+            btnLimpiarFiltros.Location = new Point(511, 387);
             btnLimpiarFiltros.Name = "btnLimpiarFiltros";
             btnLimpiarFiltros.Size = new Size(118, 45);
             btnLimpiarFiltros.TabIndex = 19;
@@ -64,7 +65,7 @@
             // 
             // btnFiltrar
             // 
-            btnFiltrar.Location = new Point(393, 406);
+            btnFiltrar.Location = new Point(326, 387);
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Size = new Size(109, 45);
             btnFiltrar.TabIndex = 18;
@@ -74,7 +75,7 @@
             // 
             // txtCodigo
             // 
-            txtCodigo.Location = new Point(791, 57);
+            txtCodigo.Location = new Point(647, 59);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(136, 23);
             txtCodigo.TabIndex = 17;
@@ -83,7 +84,7 @@
             // 
             cmbFuncionario.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFuncionario.FormattingEnabled = true;
-            cmbFuncionario.Location = new Point(423, 59);
+            cmbFuncionario.Location = new Point(337, 61);
             cmbFuncionario.Name = "cmbFuncionario";
             cmbFuncionario.Size = new Size(121, 23);
             cmbFuncionario.TabIndex = 16;
@@ -101,7 +102,7 @@
             // lblTotales
             // 
             lblTotales.AutoSize = true;
-            lblTotales.Location = new Point(478, 354);
+            lblTotales.Location = new Point(424, 354);
             lblTotales.Name = "lblTotales";
             lblTotales.Size = new Size(109, 15);
             lblTotales.TabIndex = 14;
@@ -110,7 +111,7 @@
             // lblCodigo
             // 
             lblCodigo.AutoSize = true;
-            lblCodigo.Location = new Point(655, 65);
+            lblCodigo.Location = new Point(511, 67);
             lblCodigo.Name = "lblCodigo";
             lblCodigo.Size = new Size(100, 15);
             lblCodigo.TabIndex = 13;
@@ -119,7 +120,7 @@
             // lblFuncionario
             // 
             lblFuncionario.AutoSize = true;
-            lblFuncionario.Location = new Point(344, 65);
+            lblFuncionario.Location = new Point(258, 67);
             lblFuncionario.Name = "lblFuncionario";
             lblFuncionario.Size = new Size(73, 15);
             lblFuncionario.TabIndex = 12;
@@ -138,7 +139,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1040, 509);
+            ClientSize = new Size(953, 444);
             Controls.Add(dgvHistorial);
             Controls.Add(btnLimpiarFiltros);
             Controls.Add(btnFiltrar);
@@ -149,6 +150,7 @@
             Controls.Add(lblCodigo);
             Controls.Add(lblFuncionario);
             Controls.Add(lblEstado);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "HistorialCustodiasForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Historial Custodias";

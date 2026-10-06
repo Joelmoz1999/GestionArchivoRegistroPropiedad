@@ -259,5 +259,20 @@ namespace GestionArchivoRegistroPropiedad
         private void dtpFechaPrestamo_ValueChanged(object sender, EventArgs e) { }
         private void lblObservaciones_Click(object sender, EventArgs e) { }
         private void txtObservaciones_TextChanged(object sender, EventArgs e) { }
+
+        private void cmbFuncionario_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
