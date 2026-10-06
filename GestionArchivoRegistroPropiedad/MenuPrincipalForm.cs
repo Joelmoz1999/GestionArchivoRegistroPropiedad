@@ -40,6 +40,10 @@ namespace GestionArchivoRegistroPropiedad
             mnuMantenimiento.Visible = SesionActual.EsEncargadoArchivo;
             mnuMantenimiento.Visible = SesionActual.EsAdministrador;
             mnuGestionUsuarios.Visible = SesionActual.EsAdministrador;
+            //mnuGestionArchivoRegistroPropiedad.mnuGestionTipoLibro.Visible = SesionActual.EsAdministrador;
+            mnuGestionTipoLibro.Visible = SesionActual.EsAdministrador;
+            mnuImprimirEtiquetas.Visible = SesionActual.EsAdministrador;
+
             // Custodia y Reportes son visibles para ambos roles
             mnuCustodia.Visible = true;
             mnuReportes.Visible = true;
@@ -137,6 +141,22 @@ namespace GestionArchivoRegistroPropiedad
             form.ShowDialog();
         }
 
+        private void agregarTipoLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new mnuGestionTipoLibro(_context);
+            form.ShowDialog();
+        }
 
+        private void agregarTipoLibroToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var form = new mnuGestionTipoLibro(_context);
+            form.ShowDialog();
+        }
+
+        private void codigoDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new mnuImprimirEtiquetas(_context);
+            form.ShowDialog();
+        }
     }
 }

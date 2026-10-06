@@ -146,7 +146,6 @@
             btnImprimir.TabIndex = 10;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = true;
-           // btnImprimir.Click += btnImprimir_Click;
             // 
             // dgvReporte
             // 
@@ -177,6 +176,7 @@
             Controls.Add(lblTipo);
             Name = "ReporteLibrosForm";
             Text = "ReporteLibrosForm";
+            Load += ReporteLibrosForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();
             ResumeLayout(false);
             PerformLayout();

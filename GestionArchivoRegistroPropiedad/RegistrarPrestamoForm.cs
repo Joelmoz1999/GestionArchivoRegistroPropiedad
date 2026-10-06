@@ -37,11 +37,10 @@ namespace GestionArchivoRegistroPropiedad
             dgvLibrosDisponibles.AllowUserToAddRows = false;
             dgvLibrosDisponibles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Cargar tipos
+            // Cargar tipos desde la base de datos
             cmbFiltrarTipo.Items.Clear();
             cmbFiltrarTipo.Items.Add("TODOS");
-            cmbFiltrarTipo.Items.AddRange(new object[]
-                { "Propiedad", "Sentencias", "Protocolos", "Poderes", "Hipotecas", "Otros" });
+            cmbFiltrarTipo.Items.AddRange(TiposLibrosHelper.ObtenerTiposActivos(_context).ToArray());
             cmbFiltrarTipo.SelectedIndex = 0;
 
             // Cargar funcionarios activos
@@ -144,8 +143,6 @@ namespace GestionArchivoRegistroPropiedad
             CargarLibrosDisponibles(tipo);
         }
 
-
-
         private void btnRegistrarPrestamo_Click(object sender, EventArgs e)
         {
             if (_libroSeleccionado == null)
@@ -221,26 +218,8 @@ namespace GestionArchivoRegistroPropiedad
             btnRegistrarPrestamo.Enabled = false;
         }
 
-        // Métodos vacíos
-        private void lblFiltrarTipo_Click(object sender, EventArgs e) { }
-        private void cmbFiltrarTipo_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblInfoLibro_Click(object sender, EventArgs e) { }
-        private void lblCodigoSeleccionado_Click(object sender, EventArgs e) { }
-        private void lblFuncionario_Click(object sender, EventArgs e) { }
-        private void cmbFuncionario_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblFechaPrestamo_Click(object sender, EventArgs e) { }
-        private void dtpFechaPrestamo_ValueChanged(object sender, EventArgs e) { }
-        private void lblObservaciones_Click(object sender, EventArgs e) { }
-        private void txtObservaciones_TextChanged(object sender, EventArgs e) { }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void dgvLibrosDisponibles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (dgvLibrosDisponibles.CurrentRow == null) return;
 
             try
@@ -263,9 +242,22 @@ namespace GestionArchivoRegistroPropiedad
                 MessageBox.Show($"Error al seleccionar: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-     
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        // Métodos vacíos para eventos huérfanos
+        private void lblFiltrarTipo_Click(object sender, EventArgs e) { }
+        private void cmbFiltrarTipo_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void lblInfoLibro_Click(object sender, EventArgs e) { }
+        private void lblCodigoSeleccionado_Click(object sender, EventArgs e) { }
+        private void lblFuncionario_Click(object sender, EventArgs e) { }
+        private void cmbFuncionario_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void lblFechaPrestamo_Click(object sender, EventArgs e) { }
+        private void dtpFechaPrestamo_ValueChanged(object sender, EventArgs e) { }
+        private void lblObservaciones_Click(object sender, EventArgs e) { }
+        private void txtObservaciones_TextChanged(object sender, EventArgs e) { }
     }
 }

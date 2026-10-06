@@ -37,6 +37,8 @@ namespace GestionArchivoRegistroPropiedad
                     services.AddTransient<RegistrarDevolucionForm>();
                     services.AddTransient<HistorialCustodiasForm>();
                     services.AddTransient<GestionUsuariosForm>();
+                    services.AddTransient<mnuGestionTipoLibro>();
+                    services.AddTransient<mnuImprimirEtiquetas>();
 
                 })
                 .Build();

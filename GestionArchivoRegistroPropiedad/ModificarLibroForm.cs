@@ -10,7 +10,6 @@ namespace GestionArchivoRegistroPropiedad
     {
         private readonly GestionArchivoRegistroPropiedadContext _context;
         private Libro? _libroSeleccionado = null;
-        private readonly string[] _tiposLibros = { "Propiedad", "Sentencias", "Protocolos", "Poderes", "Hipotecas", "Otros" };
 
         public ModificarLibroForm(GestionArchivoRegistroPropiedadContext context)
         {
@@ -29,8 +28,9 @@ namespace GestionArchivoRegistroPropiedad
             dgvLibros.AllowUserToAddRows = false;
             dgvLibros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // Cargar tipos desde la base de datos
             cmbEditTipo.Items.Clear();
-            cmbEditTipo.Items.AddRange(_tiposLibros);
+            cmbEditTipo.Items.AddRange(TiposLibrosHelper.ObtenerTiposActivos(_context).ToArray());
 
             numEditAnio.Minimum = 1900;
             numEditAnio.Maximum = 2100;
@@ -87,10 +87,6 @@ namespace GestionArchivoRegistroPropiedad
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
 
         private void CargarDatosEnCamposEdicion(Libro libro)
         {
@@ -224,27 +220,8 @@ namespace GestionArchivoRegistroPropiedad
             return codigo;
         }
 
-        // Métodos vacíos para eventos huérfanos
-        private void lblBuscar_Click(object sender, EventArgs e) { }
-        private void txtBuscarCodigo_TextChanged(object sender, EventArgs e) { }
-        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void grpEdicion_Enter(object sender, EventArgs e) { }
-        private void lblEditTipo_Click(object sender, EventArgs e) { }
-        private void cmbEditTipo_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblEditAnio_Click(object sender, EventArgs e) { }
-        private void numEditAnio_ValueChanged(object sender, EventArgs e) { }
-        private void lblEditTomo_Click(object sender, EventArgs e) { }
-        private void numEditTomo_ValueChanged(object sender, EventArgs e) { }
-        private void lblEditPartidaIni_Click(object sender, EventArgs e) { }
-        private void numEditPartidaIni_ValueChanged(object sender, EventArgs e) { }
-        private void lblEditPartidaFin_Click(object sender, EventArgs e) { }
-        private void numEditPartidaFin_ValueChanged(object sender, EventArgs e) { }
-        private void lblEditObservacion_Click(object sender, EventArgs e) { }
-        private void txtEditObservacion_TextChanged(object sender, EventArgs e) { }
-
         private void btnBuscarTodos_Click(object sender, EventArgs e)
         {
-
             txtBuscarCodigo.Clear();
             LimpiarCamposEdicion();
             CargarTodosLosLibros();
@@ -252,7 +229,6 @@ namespace GestionArchivoRegistroPropiedad
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-        
             string codigo = txtBuscarCodigo.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(codigo))
@@ -303,7 +279,24 @@ namespace GestionArchivoRegistroPropiedad
                 MessageBox.Show($"Error al buscar: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
-    }
+        }
+
+        // Métodos vacíos para eventos huérfanos
+        private void lblBuscar_Click(object sender, EventArgs e) { }
+        private void txtBuscarCodigo_TextChanged(object sender, EventArgs e) { }
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void grpEdicion_Enter(object sender, EventArgs e) { }
+        private void lblEditTipo_Click(object sender, EventArgs e) { }
+        private void cmbEditTipo_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void lblEditAnio_Click(object sender, EventArgs e) { }
+        private void numEditAnio_ValueChanged(object sender, EventArgs e) { }
+        private void lblEditTomo_Click(object sender, EventArgs e) { }
+        private void numEditTomo_ValueChanged(object sender, EventArgs e) { }
+        private void lblEditPartidaIni_Click(object sender, EventArgs e) { }
+        private void numEditPartidaIni_ValueChanged(object sender, EventArgs e) { }
+        private void lblEditPartidaFin_Click(object sender, EventArgs e) { }
+        private void numEditPartidaFin_ValueChanged(object sender, EventArgs e) { }
+        private void lblEditObservacion_Click(object sender, EventArgs e) { }
+        private void txtEditObservacion_TextChanged(object sender, EventArgs e) { }
     }
 }

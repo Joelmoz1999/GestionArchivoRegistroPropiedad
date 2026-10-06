@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using GestionArchivoRegistroPropiedad.Models;
-using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using GestionArchivoRegistroPropiedad.Models;
 using ZXing;
 using ZXing.Common;
 using ZXing.Windows.Compatibility;
@@ -14,7 +12,6 @@ namespace GestionArchivoRegistroPropiedad
     public partial class AgregarLibroForm : Form
     {
         private readonly GestionArchivoRegistroPropiedadContext _context;
-        private readonly string[] _tiposLibros = { "Propiedad", "Sentencias", "Protocolos", "Poderes", "Hipotecas", "Otros" };
 
         public AgregarLibroForm(GestionArchivoRegistroPropiedadContext context)
         {
@@ -34,8 +31,9 @@ namespace GestionArchivoRegistroPropiedad
                 return;
             }
 
+            // Cargar tipos desde la base de datos
             cmbTipoLibro.Items.Clear();
-            cmbTipoLibro.Items.AddRange(_tiposLibros);
+            cmbTipoLibro.Items.AddRange(TiposLibrosHelper.ObtenerTiposActivos(_context).ToArray());
             cmbTipoLibro.SelectedIndex = 0;
 
             numAnio.Minimum = 1900;
@@ -74,10 +72,6 @@ namespace GestionArchivoRegistroPropiedad
             }
         }
 
-
-
-
-
         private string GenerarCodigoBarrasString(string tipo, int anio, int tomo)
         {
             string prefijoTipo = tipo.Length >= 4
@@ -87,7 +81,7 @@ namespace GestionArchivoRegistroPropiedad
             int secuencial = _context.Libros.Count(l =>
                 l.TipoLibro == tipo && l.Anio == anio && l.Tomo == tomo) + 1;
 
-            return $"{prefijoTipo}-{anio}-{tomo:D2}-{secuencial:D3}";
+            return $"{prefijoTipo}{anio}{tomo:D2}{secuencial:D3}";
         }
 
         private string GenerarCodigoBarrasUnico(string tipo, int anio, int tomo)
@@ -105,7 +99,7 @@ namespace GestionArchivoRegistroPropiedad
                 int totalExistentes = _context.Libros.Count(l =>
                     l.TipoLibro == tipo && l.Anio == anio && l.Tomo == tomo);
 
-                codigo = $"{prefijoTipo}-{anio}-{tomo:D3}-{(totalExistentes + intentos + 1):D4}";
+                codigo = $"{prefijoTipo}{anio}{tomo:D3}{(totalExistentes + intentos + 1):D4}";
             }
 
             return codigo;
@@ -128,23 +122,6 @@ namespace GestionArchivoRegistroPropiedad
 
             return writer.Write(contenido);
         }
-
-        // Métodos vacíos para eventos huérfanos
-        private void lblTipo_Click(object sender, EventArgs e) { }
-        private void cmbTipoLibro_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblAnio_Click(object sender, EventArgs e) { }
-        private void numAnio_ValueChanged(object sender, EventArgs e) { }
-        private void lblTomo_Click(object sender, EventArgs e) { }
-        private void numTomo_ValueChanged(object sender, EventArgs e) { }
-        private void lblPartidaIni_Click(object sender, EventArgs e) { }
-        private void numPartidaIni_ValueChanged(object sender, EventArgs e) { }
-        private void lblPartidaFin_Click(object sender, EventArgs e) { }
-        private void numPartidaFin_ValueChanged(object sender, EventArgs e) { }
-        private void lblObservacion_Click(object sender, EventArgs e) { }
-        private void txtObservacion_TextChanged(object sender, EventArgs e) { }
-        private void lblCodigoBarras_Click(object sender, EventArgs e) { }
-        private void txtCodigoBarras_TextChanged(object sender, EventArgs e) { }
-        private void picCodigoBarras_Click(object sender, EventArgs e) { }
 
         private void bntGuardarLibro_Click(object sender, EventArgs e)
         {
@@ -198,7 +175,7 @@ namespace GestionArchivoRegistroPropiedad
 
                 txtCodigoBarras.Text = codigoBarras;
                 picCodigoBarras.Image = GenerarImagenCodigoBarras(codigoBarras);
-               
+
                 btnImprimirEtiqueta.Enabled = true;
 
                 MessageBox.Show($"¡Libro guardado correctamente!\n\nCódigo de Barras: {codigoBarras}",
@@ -213,7 +190,6 @@ namespace GestionArchivoRegistroPropiedad
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-
             cmbTipoLibro.SelectedIndex = 0;
             numAnio.Value = DateTime.Now.Year;
             numTomo.Value = 1;
@@ -223,7 +199,6 @@ namespace GestionArchivoRegistroPropiedad
             txtCodigoBarras.Clear();
             picCodigoBarras.Image = null;
             btnImprimirEtiqueta.Enabled = false;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -319,7 +294,23 @@ namespace GestionArchivoRegistroPropiedad
                 MessageBox.Show($"Error al imprimir: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
-    }
+        }
+
+        // Métodos vacíos para eventos huérfanos
+        private void lblTipo_Click(object sender, EventArgs e) { }
+        private void cmbTipoLibro_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void lblAnio_Click(object sender, EventArgs e) { }
+        private void numAnio_ValueChanged(object sender, EventArgs e) { }
+        private void lblTomo_Click(object sender, EventArgs e) { }
+        private void numTomo_ValueChanged(object sender, EventArgs e) { }
+        private void lblPartidaIni_Click(object sender, EventArgs e) { }
+        private void numPartidaIni_ValueChanged(object sender, EventArgs e) { }
+        private void lblPartidaFin_Click(object sender, EventArgs e) { }
+        private void numPartidaFin_ValueChanged(object sender, EventArgs e) { }
+        private void lblObservacion_Click(object sender, EventArgs e) { }
+        private void txtObservacion_TextChanged(object sender, EventArgs e) { }
+        private void lblCodigoBarras_Click(object sender, EventArgs e) { }
+        private void txtCodigoBarras_TextChanged(object sender, EventArgs e) { }
+        private void picCodigoBarras_Click(object sender, EventArgs e) { }
     }
 }

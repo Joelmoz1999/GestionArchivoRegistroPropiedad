@@ -4,7 +4,6 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -34,10 +33,10 @@ namespace GestionArchivoRegistroPropiedad
             dgvReporte.AllowUserToAddRows = false;
             dgvReporte.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Cargar tipos
+            // Cargar tipos desde la base de datos
             cmbTipo.Items.Clear();
-            cmbTipo.Items.AddRange(new object[]
-                { "TODOS", "Propiedad", "Sentencias", "Protocolos", "Poderes", "Hipotecas", "Otros" });
+            cmbTipo.Items.Add("TODOS");
+            cmbTipo.Items.AddRange(TiposLibrosHelper.ObtenerTiposActivos(_context).ToArray());
             cmbTipo.SelectedIndex = 0;
 
             // Fechas por defecto

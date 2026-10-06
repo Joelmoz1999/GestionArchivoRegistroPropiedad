@@ -21,9 +21,13 @@ public partial class GestionArchivoRegistroPropiedadContext : DbContext
 
     public virtual DbSet<Libro> Libros { get; set; }
 
+    public virtual DbSet<TiposLibro> TiposLibros { get; set; }
+
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=192.168.1.222\\SQLEXPRESS;Database=GestionArchivoRegistroPropiedad;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -58,6 +62,27 @@ public partial class GestionArchivoRegistroPropiedadContext : DbContext
                 .HasConstraintName("FK_Custodia_Usuario");
         });
 
+
+
+
+
+
+
+        modelBuilder.Entity<TiposLibro>(entity =>
+        {
+            entity.HasKey(e => e.TipoLibroId).HasName("PK__TiposLib__XXXXXXXXXXXX");
+            entity.HasIndex(e => e.Nombre, "UQ__TiposLib__Nombre").IsUnique();
+            entity.Property(e => e.Nombre).HasMaxLength(100);
+            entity.Property(e => e.Descripcion).HasMaxLength(255);
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.FechaCreacion).HasDefaultValueSql("(getdate())");
+        });
+
+
+
+
+
+
         modelBuilder.Entity<Funcionario>(entity =>
         {
             entity.HasKey(e => e.FuncionarioId).HasName("PK__Funciona__297ECD4AB2917FEA");
@@ -90,6 +115,21 @@ public partial class GestionArchivoRegistroPropiedadContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Observacion).HasMaxLength(500);
             entity.Property(e => e.TipoLibro).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TiposLibro>(entity =>
+        {
+            entity.HasKey(e => e.TipoLibroId).HasName("PK__TiposLib__D5FDC1D5E2E5AEFA");
+
+            entity.HasIndex(e => e.Nombre, "UQ__TiposLib__75E3EFCF36E6DF3E").IsUnique();
+
+            entity.Property(e => e.TipoLibroId).HasColumnName("TipoLibroID");
+            entity.Property(e => e.Activo).HasDefaultValue(true);
+            entity.Property(e => e.Descripcion).HasMaxLength(255);
+            entity.Property(e => e.FechaCreacion)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Nombre).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Usuario>(entity =>

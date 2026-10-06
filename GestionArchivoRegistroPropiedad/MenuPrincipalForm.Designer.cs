@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipalForm));
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             mnuCerrarSesion = new ToolStripMenuItem();
@@ -39,6 +40,8 @@
             eliminarLibroToolStripMenuItem = new ToolStripMenuItem();
             mnuGestionFuncionarios = new ToolStripMenuItem();
             mnuGestionUsuarios = new ToolStripMenuItem();
+            mnuGestionTipoLibro = new ToolStripMenuItem();
+            mnuImprimirEtiquetas = new ToolStripMenuItem();
             operacionesToolStripMenuItem = new ToolStripMenuItem();
             mnuCustodia = new ToolStripMenuItem();
             registrarDevoluciónToolStripMenuItem = new ToolStripMenuItem();
@@ -48,12 +51,13 @@
             reporteDeCustodiasToolStripMenuItem = new ToolStripMenuItem();
             reporteDeFuncionariosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
+            panel1 = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, mnuMantenimiento, operacionesToolStripMenuItem, reportesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, mnuMantenimiento, mnuImprimirEtiquetas, operacionesToolStripMenuItem, reportesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(892, 24);
@@ -83,7 +87,7 @@
             // 
             // mnuMantenimiento
             // 
-            mnuMantenimiento.DropDownItems.AddRange(new ToolStripItem[] { mnuGestionLibros, mnuGestionFuncionarios, mnuGestionUsuarios });
+            mnuMantenimiento.DropDownItems.AddRange(new ToolStripItem[] { mnuGestionLibros, mnuGestionFuncionarios, mnuGestionUsuarios, mnuGestionTipoLibro });
             mnuMantenimiento.Name = "mnuMantenimiento";
             mnuMantenimiento.Size = new Size(101, 20);
             mnuMantenimiento.Text = "Mantenimiento";
@@ -129,6 +133,20 @@
             mnuGestionUsuarios.Size = new Size(201, 22);
             mnuGestionUsuarios.Text = "Gestión de Usuarios";
             mnuGestionUsuarios.Click += mnuGestionUsuarios_Click_1;
+            // 
+            // mnuGestionTipoLibro
+            // 
+            mnuGestionTipoLibro.Name = "mnuGestionTipoLibro";
+            mnuGestionTipoLibro.Size = new Size(201, 22);
+            mnuGestionTipoLibro.Text = "Agregar Tipo Libro";
+            mnuGestionTipoLibro.Click += agregarTipoLibroToolStripMenuItem_Click_1;
+            // 
+            // mnuImprimirEtiquetas
+            // 
+            mnuImprimirEtiquetas.Name = "mnuImprimirEtiquetas";
+            mnuImprimirEtiquetas.Size = new Size(109, 20);
+            mnuImprimirEtiquetas.Text = "Codigo de Barras";
+            mnuImprimirEtiquetas.Click += codigoDeBarrasToolStripMenuItem_Click;
             // 
             // operacionesToolStripMenuItem
             // 
@@ -193,13 +211,28 @@
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = Properties.Resources.Logo_RPVM2;
+            panel1.BackgroundImageLayout = ImageLayout.Zoom;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 24);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(892, 501);
+            panel1.TabIndex = 2;
+            // 
             // MenuPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(892, 547);
+            Controls.Add(panel1);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
+            DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "MenuPrincipalForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -233,5 +266,8 @@
         private ToolStripMenuItem eliminarLibroToolStripMenuItem;
         private ToolStripMenuItem registrarDevoluciónToolStripMenuItem;
         private ToolStripMenuItem historialToolStripMenuItem;
+        private ToolStripMenuItem mnuGestionTipoLibro;
+        private ToolStripMenuItem mnuImprimirEtiquetas;
+        private Panel panel1;
     }
 }
