@@ -316,6 +316,7 @@
             Name = "GestionUsuariosForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestion Usuarios";
+            Load += GestionUsuariosForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             grpDatos.ResumeLayout(false);
             grpDatos.PerformLayout();

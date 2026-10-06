@@ -42,6 +42,20 @@ namespace GestionArchivoRegistroPropiedad
             numEditPartidaFin.Maximum = 9999999;
 
             CargarTodosLosLibros();
+
+
+        
+            if (!SesionActual.EsAdministrador)
+            {
+                MessageBox.Show("Solo el Administrador puede modificar libros.",
+                    "Sin permisos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+          
+        
+
         }
 
         private void CargarTodosLosLibros()
@@ -110,6 +124,12 @@ namespace GestionArchivoRegistroPropiedad
             numEditPartidaFin.Value = 1;
             txtEditObservacion.Clear();
         }
+
+
+
+
+
+
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {

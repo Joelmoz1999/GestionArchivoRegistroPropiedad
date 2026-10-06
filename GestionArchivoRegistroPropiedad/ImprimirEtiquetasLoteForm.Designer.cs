@@ -136,6 +136,8 @@
             dgvLibros.Size = new Size(800, 147);
             dgvLibros.TabIndex = 9;
             dgvLibros.CellContentClick += dgvLibros_CellContentClick;
+            dgvLibros.CellValueChanged += dgvLibros_CellValueChanged;
+            dgvLibros.CurrentCellDirtyStateChanged += dgvLibros_CurrentCellDirtyStateChanged;
             // 
             // btnImprimirSeleccionados
             // 

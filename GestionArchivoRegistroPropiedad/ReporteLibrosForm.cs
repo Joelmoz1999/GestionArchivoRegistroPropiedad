@@ -221,5 +221,7 @@ namespace GestionArchivoRegistroPropiedad
         private void dtpHasta_ValueChanged(object sender, EventArgs e) { }
         private void lblTotales_Click(object sender, EventArgs e) { }
         private void dgvReporte_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        
     }
 }

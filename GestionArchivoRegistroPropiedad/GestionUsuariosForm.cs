@@ -23,7 +23,7 @@ namespace GestionArchivoRegistroPropiedad
         // ============================================================
         // EVENTO LOAD
         // ============================================================
-        private void GestionUsuariosForm_Load(object sender, EventArgs e)
+        private void GestionUsuariosForm_Load_1(object sender, EventArgs e)
         {
             if (SesionActual.UsuarioLogueado == null || !SesionActual.EsAdministrador)
             {
@@ -436,7 +436,7 @@ namespace GestionArchivoRegistroPropiedad
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-         
+
             string nombreCompleto = txtNombreCompleto.Text.Trim();
             string nombreUsuario = txtNombreUsuario.Text.Trim();
             string rol = cmbRol.SelectedItem?.ToString() ?? "";
@@ -565,7 +565,15 @@ namespace GestionArchivoRegistroPropiedad
                 MessageBox.Show($"Error al guardar: {ex.Message}\n\nDetalle: {ex.InnerException?.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (!SesionActual.EsAdministrador)
+            {
+                MessageBox.Show("Solo el Administrador puede agregar modificar o eliminar usuarios.",
+                    "Sin permisos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+        }
+
         
-    }
     }
 }

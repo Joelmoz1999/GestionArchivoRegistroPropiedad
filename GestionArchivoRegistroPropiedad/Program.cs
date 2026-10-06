@@ -30,7 +30,6 @@ namespace GestionArchivoRegistroPropiedad
                     services.AddTransient<AgregarLibroForm>();
                     services.AddTransient<ModificarLibroForm>();
                     services.AddTransient<EliminarLibroForm>();
-                    services.AddTransient<GestionFuncionariosForm>();
                     services.AddTransient<ReporteLibrosForm>();
                     services.AddTransient<ReporteCustodiasForm>();
                     services.AddTransient<RegistrarPrestamoForm>();

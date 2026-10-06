@@ -241,6 +241,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(658, 354);
             Controls.Add(label1);
             Controls.Add(btnImprimirEtiqueta);

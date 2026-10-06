@@ -41,6 +41,7 @@
             btnExportarPDF = new Button();
             btnImprimir = new Button();
             dgvReporte = new DataGridView();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvReporte).BeginInit();
             SuspendLayout();
             // 
@@ -100,6 +101,7 @@
             chkUsarFechas.TabIndex = 5;
             chkUsarFechas.Text = "Filtrar por rango de fechas";
             chkUsarFechas.UseVisualStyleBackColor = true;
+            chkUsarFechas.CheckedChanged += chkUsarFechas_CheckedChanged;
             // 
             // dtpDesde
             // 
@@ -158,11 +160,22 @@
             dgvReporte.TabIndex = 11;
             dgvReporte.CellContentClick += dgvReporte_CellContentClick;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(295, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(153, 21);
+            label2.TabIndex = 78;
+            label2.Text = "REPORTE DE LIBROS";
+            // 
             // ReporteLibrosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(dgvReporte);
             Controls.Add(btnImprimir);
             Controls.Add(btnExportarPDF);
@@ -177,6 +190,7 @@
             Controls.Add(lblTipo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ReporteLibrosForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro de la Propiedad del Cantón Pedro Vicente Maldonado | Reporte Libros";
             Load += ReporteLibrosForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReporte).EndInit();
@@ -198,5 +212,6 @@
         private Button btnExportarPDF;
         private Button btnImprimir;
         private DataGridView dgvReporte;
+        private Label label2;
     }
 }

@@ -22,6 +22,12 @@ namespace GestionArchivoRegistroPropiedad
         {
             InitializeComponent();
             _context = context;
+
+            // 🔑 Conectar eventos manualmente (por si el diseñador no los tiene)
+            dgvLibros.CellValueChanged += dgvLibros_CellValueChanged;
+            dgvLibros.CurrentCellDirtyStateChanged += dgvLibros_CurrentCellDirtyStateChanged;
+            dgvLibros.CellClick += dgvLibros_CellClick;
+            dgvLibros.CellDoubleClick += dgvLibros_CellDoubleClick;
         }
 
         public mnuImprimirEtiquetas() { InitializeComponent(); }
@@ -182,6 +188,9 @@ namespace GestionArchivoRegistroPropiedad
             btnImprimirSeleccionados.Enabled = total > 0;
         }
 
+        // ============================================================
+        // EVENTOS DEL CHECKBOX (conectados en el constructor)
+        // ============================================================
         private void dgvLibros_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dgvLibros.Columns[e.ColumnIndex].Name == "Seleccionar")
@@ -196,6 +205,30 @@ namespace GestionArchivoRegistroPropiedad
                 dgvLibros.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
+        private void dgvLibros_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (dgvLibros.Columns[e.ColumnIndex].Name == "Seleccionar")
+            {
+                bool valorActual = dgvLibros.Rows[e.RowIndex].Cells["Seleccionar"].Value is bool b && b;
+                dgvLibros.Rows[e.RowIndex].Cells["Seleccionar"].Value = !valorActual;
+                ActualizarTotalSeleccionados();
+            }
+        }
+
+        private void dgvLibros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            bool valorActual = dgvLibros.Rows[e.RowIndex].Cells["Seleccionar"].Value is bool b && b;
+            dgvLibros.Rows[e.RowIndex].Cells["Seleccionar"].Value = !valorActual;
+            ActualizarTotalSeleccionados();
+        }
+
+        // ============================================================
+        // BOTONES
+        // ============================================================
         private void btnBuscarCodigo_Click(object sender, EventArgs e)
         {
             string tipo = cmbFiltroTipo.SelectedItem?.ToString() ?? "TODOS";
@@ -241,8 +274,8 @@ namespace GestionArchivoRegistroPropiedad
                             Tipo = row.Cells["TipoLibro"].Value?.ToString() ?? "",
                             Anio = row.Cells["Anio"].Value?.ToString() ?? "",
                             Tomo = row.Cells["Tomo"].Value?.ToString() ?? "",
-                            PartidaInicial = row.Cells["FolioInicial"].Value?.ToString() ?? "",
-                            PartidaFinal = row.Cells["FolioFinal"].Value?.ToString() ?? ""
+                            PartidaInicial = row.Cells["PartidaInicial"].Value?.ToString() ?? "",
+                            PartidaFinal = row.Cells["PartidaFinal"].Value?.ToString() ?? ""
                         };
 
                         etiqueta.ImagenCodigo = GenerarImagenCodigoBarras(etiqueta.Codigo);
@@ -292,6 +325,9 @@ namespace GestionArchivoRegistroPropiedad
             }
         }
 
+        // ============================================================
+        // IMPRESIÓN PÁGINA POR PÁGINA
+        // ============================================================
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             if (_indiceImpresion >= _etiquetasAImprimir.Count)
@@ -306,25 +342,15 @@ namespace GestionArchivoRegistroPropiedad
             float x = 10;
             float y = 10;
 
-            using var fontTitulo = new Font("Arial", 8, FontStyle.Bold);
+            using var fontEncabezado = new Font("Arial", 8, FontStyle.Bold);
             using var fontNormal = new Font("Arial", 7);
-            using var fontCodigo = new Font("Consolas", 8, FontStyle.Bold);
+            using var fontCodigo = new Font("Consolas", 9, FontStyle.Bold);
 
-            g.DrawString("REGISTRO DE LA PROPIEDAD", fontTitulo, Brushes.Black, x, y);
-            y += 15;
-            g.DrawString("Pedro Vicente Maldonado", fontNormal, Brushes.Black, x, y);
-            y += 15;
-            g.DrawLine(Pens.Black, x, y, x + 470, y);
-            y += 5;
+            
 
-            g.DrawString($"Tipo: {etiqueta.Tipo}", fontNormal, Brushes.Black, x, y);
-            y += 15;
-            g.DrawString($"Año: {etiqueta.Anio}   Tomo: {etiqueta.Tomo}", fontNormal, Brushes.Black, x, y);
-            y += 15;
-            g.DrawString($"Partidas: {etiqueta.PartidaInicial} - {etiqueta.PartidaFinal}",
-                fontNormal, Brushes.Black, x, y);
-            y += 20;
-
+            // ============================================================
+            // IMAGEN DEL CÓDIGO DE BARRAS (centrada)
+            // ============================================================
             if (etiqueta.ImagenCodigo != null)
             {
                 int anchoImg = 300;
@@ -334,6 +360,9 @@ namespace GestionArchivoRegistroPropiedad
                 y += altoImg + 5;
             }
 
+            // ============================================================
+            // TEXTO DEL CÓDIGO (centrado)
+            // ============================================================
             SizeF tamTexto = g.MeasureString(etiqueta.Codigo, fontCodigo);
             float xTexto = x + (470 - tamTexto.Width) / 2;
             g.DrawString(etiqueta.Codigo, fontCodigo, Brushes.Black, xTexto, y);
@@ -342,6 +371,9 @@ namespace GestionArchivoRegistroPropiedad
             e.HasMorePages = _indiceImpresion < _etiquetasAImprimir.Count;
         }
 
+        // ============================================================
+        // GENERAR IMAGEN DEL CÓDIGO DE BARRAS
+        // ============================================================
         private Image GenerarImagenCodigoBarras(string contenido)
         {
             var writer = new ZXing.Windows.Compatibility.BarcodeWriter
@@ -352,7 +384,7 @@ namespace GestionArchivoRegistroPropiedad
                     Height = 100,
                     Width = 300,
                     Margin = 5,
-                    PureBarcode = false
+                    PureBarcode = true  // Solo las barras, sin texto
                 },
                 Renderer = new ZXing.Windows.Compatibility.BitmapRenderer()
             };
@@ -360,6 +392,9 @@ namespace GestionArchivoRegistroPropiedad
             return writer.Write(contenido);
         }
 
+        // ============================================================
+        // CLASE AUXILIAR
+        // ============================================================
         private class EtiquetaImpresion
         {
             public string Codigo { get; set; } = "";
@@ -371,21 +406,15 @@ namespace GestionArchivoRegistroPropiedad
             public Image? ImagenCodigo { get; set; }
         }
 
-        // Métodos vacíos
+        // ============================================================
+        // MÉTODOS VACÍOS PARA EVENTOS HUÉRFANOS
+        // ============================================================
         private void lblFiltroTipo_Click(object sender, EventArgs e) { }
         private void cmbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e) { }
         private void lblFiltroCodigo_Click(object sender, EventArgs e) { }
         private void txtFiltroCodigo_TextChanged(object sender, EventArgs e) { }
         private void lblTotalSeleccionados_Click(object sender, EventArgs e) { }
-
-        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
     }
 }

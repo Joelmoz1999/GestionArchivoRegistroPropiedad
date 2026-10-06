@@ -24,7 +24,7 @@ namespace GestionArchivoRegistroPropiedad
         // ============================================================
         // EVENTO LOAD
         // ============================================================
-        private void GestionTiposLibrosForm_Load(object sender, EventArgs e)
+        private void GestionTiposLibrosForm_Load_1(object sender, EventArgs e)
         {
             if (SesionActual.UsuarioLogueado == null || !SesionActual.EsAdministrador)
             {
@@ -35,6 +35,17 @@ namespace GestionArchivoRegistroPropiedad
             }
 
             CargarTipos();
+
+
+
+            if (!SesionActual.EsAdministrador)
+            {
+                MessageBox.Show("Solo el Administrador puede modificar tipos de libros.",
+                    "Sin permisos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
         }
 
         // ============================================================
@@ -340,6 +351,9 @@ namespace GestionArchivoRegistroPropiedad
             }
         }
 
+
+
+
         // ============================================================
         // REACTIVAR
         // ============================================================
@@ -378,6 +392,11 @@ namespace GestionArchivoRegistroPropiedad
             }
         }
 
+
+
+
+
+
         // ============================================================
         // CERRAR
         // ============================================================
@@ -394,9 +413,6 @@ namespace GestionArchivoRegistroPropiedad
         private void txtNuevoTipo_TextChanged(object sender, EventArgs e) { }
         private void lblExistentes_Click(object sender, EventArgs e) { }
 
-        private void GestionTiposLibrosForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
