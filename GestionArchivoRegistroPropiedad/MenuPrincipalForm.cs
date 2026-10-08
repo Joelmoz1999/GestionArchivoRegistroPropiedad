@@ -235,7 +235,7 @@ namespace GestionArchivoRegistroPropiedad
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var form = new ReporteLibrosForm(_context);
+            var form = new ModificarLibroForm(_context);
             form.ShowDialog();
         }
 

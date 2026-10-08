@@ -73,9 +73,9 @@ namespace GestionArchivoRegistroPropiedad.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LogoRPPVM3 {
+        internal static System.Drawing.Bitmap LogoRPPVMnegro {
             get {
-                object obj = ResourceManager.GetObject("LogoRPPVM3", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoRPPVMnegro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

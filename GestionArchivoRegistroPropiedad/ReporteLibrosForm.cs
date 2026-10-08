@@ -100,14 +100,15 @@ namespace GestionArchivoRegistroPropiedad
 
                 dgvReporte.DataSource = resultado;
 
+                // 🔑 Renombrar encabezados del DataGridView
                 if (dgvReporte.Columns["CodigoBarras"] != null)
                     dgvReporte.Columns["CodigoBarras"].HeaderText = "Código";
                 if (dgvReporte.Columns["TipoLibro"] != null)
                     dgvReporte.Columns["TipoLibro"].HeaderText = "Tipo";
                 if (dgvReporte.Columns["PartidaInicial"] != null)
-                    dgvReporte.Columns["PartidaInicial"].HeaderText = "P. Inicial";
+                    dgvReporte.Columns["PartidaInicial"].HeaderText = "Folio Inicial";
                 if (dgvReporte.Columns["PartidaFinal"] != null)
-                    dgvReporte.Columns["PartidaFinal"].HeaderText = "P. Final";
+                    dgvReporte.Columns["PartidaFinal"].HeaderText = "Folio Final";
                 if (dgvReporte.Columns["FechaRegistro"] != null)
                     dgvReporte.Columns["FechaRegistro"].HeaderText = "Fecha Registro";
 
@@ -171,7 +172,7 @@ namespace GestionArchivoRegistroPropiedad
                                     cols.RelativeColumn();
                             });
 
-                            // Encabezados
+                            // Encabezados (usando HeaderText ya modificado)
                             table.Header(h =>
                             {
                                 foreach (DataColumn c in dt.Columns)
@@ -221,7 +222,5 @@ namespace GestionArchivoRegistroPropiedad
         private void dtpHasta_ValueChanged(object sender, EventArgs e) { }
         private void lblTotales_Click(object sender, EventArgs e) { }
         private void dgvReporte_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        
     }
 }

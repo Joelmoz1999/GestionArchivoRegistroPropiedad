@@ -91,9 +91,9 @@ namespace GestionArchivoRegistroPropiedad
                 if (dgvLibros.Columns["TipoLibro"] != null)
                     dgvLibros.Columns["TipoLibro"].HeaderText = "Tipo";
                 if (dgvLibros.Columns["PartidaInicial"] != null)
-                    dgvLibros.Columns["PartidaInicial"].HeaderText = "P. Inicial";
+                    dgvLibros.Columns["PartidaInicial"].HeaderText = "Folio Inicial";
                 if (dgvLibros.Columns["PartidaFinal"] != null)
-                    dgvLibros.Columns["PartidaFinal"].HeaderText = "P. Final";
+                    dgvLibros.Columns["PartidaFinal"].HeaderText = "Folio Final";
             }
             catch (Exception ex)
             {

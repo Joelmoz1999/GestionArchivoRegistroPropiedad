@@ -44,7 +44,7 @@ namespace GestionArchivoRegistroPropiedad
                 return;
             }
 
-            _logoRegistro = Properties.Resources.LogoRPPVM3;
+            _logoRegistro = Properties.Resources.LogoRPPVMnegro;
 
             // Configurar grilla
             dgvLibros.AllowUserToAddRows = false;

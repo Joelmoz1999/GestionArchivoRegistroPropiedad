@@ -13,12 +13,21 @@ namespace GestionArchivoRegistroPropiedad
         {
             var dt = new DataTable();
 
-            // Crear columnas (excluyendo las invisibles)
+            // Crear columnas usando el HeaderText (texto visible)
             foreach (DataGridViewColumn col in dgv.Columns)
             {
                 if (col.Visible)
                 {
-                    dt.Columns.Add(col.Name, typeof(string));
+                    // 🔑 Usa HeaderText si existe, si no, usa Name
+                    string nombreColumna = string.IsNullOrWhiteSpace(col.HeaderText)
+                        ? col.Name
+                        : col.HeaderText;
+
+                    // Evitar duplicados
+                    while (dt.Columns.Contains(nombreColumna))
+                        nombreColumna += "_";
+
+                    dt.Columns.Add(nombreColumna, typeof(string));
                 }
             }
 
@@ -28,12 +37,14 @@ namespace GestionArchivoRegistroPropiedad
                 if (row.IsNewRow) continue;
 
                 var fila = dt.NewRow();
+                int indice = 0;
                 foreach (DataGridViewColumn col in dgv.Columns)
                 {
                     if (!col.Visible) continue;
 
                     var valor = row.Cells[col.Index].Value;
-                    fila[col.Name] = valor?.ToString() ?? "";
+                    fila[indice] = valor?.ToString() ?? "";
+                    indice++;
                 }
                 dt.Rows.Add(fila);
             }
