@@ -18,6 +18,8 @@ namespace GestionArchivoRegistroPropiedad
         private List<EtiquetaImpresion> _etiquetasAImprimir = new();
         private int _indiceImpresion = 0;
 
+        private Image? _logoRegistro;
+
         public mnuImprimirEtiquetas(GestionArchivoRegistroPropiedadContext context)
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace GestionArchivoRegistroPropiedad
                 this.Close();
                 return;
             }
+
+            _logoRegistro = Properties.Resources.LogoRPPVM3;
 
             // Configurar grilla
             dgvLibros.AllowUserToAddRows = false;
@@ -189,7 +193,7 @@ namespace GestionArchivoRegistroPropiedad
         }
 
         // ============================================================
-        // EVENTOS DEL CHECKBOX (conectados en el constructor)
+        // EVENTOS DEL CHECKBOX
         // ============================================================
         private void dgvLibros_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -299,8 +303,31 @@ namespace GestionArchivoRegistroPropiedad
 
                 var printDoc = new PrintDocument();
                 printDoc.DocumentName = "Etiquetas en lote";
-                printDoc.DefaultPageSettings.PaperSize = new PaperSize("Etiqueta", 500, 300);
-                printDoc.DefaultPageSettings.Margins = new Margins(10, 10, 10, 10);
+
+                // ============================================================
+                // CONFIGURAR TAMAÑO DE ETIQUETA
+                // 100 mm x 180 mm => 393 x 708 (centésimas de pulgada)
+                // ============================================================
+                PaperSize tamanoEtiqueta = null;
+
+                foreach (PaperSize ps in printDoc.PrinterSettings.PaperSizes)
+                {
+                    string nombre = ps.PaperName.ToLower();
+                    if (nombre.Contains("user") || (nombre.Contains("100") && nombre.Contains("180")))
+                    {
+                        tamanoEtiqueta = ps;
+                        break;
+                    }
+                }
+
+                if (tamanoEtiqueta == null)
+                {
+                    tamanoEtiqueta = new PaperSize("Etiqueta100x180", 393, 708);
+                }
+
+                printDoc.DefaultPageSettings.PaperSize = tamanoEtiqueta;
+                printDoc.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+                printDoc.DefaultPageSettings.Landscape = false;
 
                 _indiceImpresion = 0;
                 printDoc.PrintPage += PrintDoc_PrintPage;
@@ -308,7 +335,7 @@ namespace GestionArchivoRegistroPropiedad
                 using var printDialog = new PrintDialog
                 {
                     Document = printDoc,
-                    UseEXDialog = true
+                    UseEXDialog = false
                 };
 
                 if (printDialog.ShowDialog() == DialogResult.OK)
@@ -327,6 +354,10 @@ namespace GestionArchivoRegistroPropiedad
 
         // ============================================================
         // IMPRESIÓN PÁGINA POR PÁGINA
+        // Contenido CENTRADO vertical y horizontalmente en la etiqueta
+        // - "RPPVM" arriba, centrado sobre el código
+        // - Logo a la izquierda del código
+        // - Texto del código abajo, centrado
         // ============================================================
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -338,41 +369,117 @@ namespace GestionArchivoRegistroPropiedad
 
             var etiqueta = _etiquetasAImprimir[_indiceImpresion];
             var g = e.Graphics!;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
-            float x = 10;
-            float y = 10;
+            // Área real de la etiqueta
+            float anchoEtiqueta = e.PageBounds.Width;
+            float altoEtiqueta = e.PageBounds.Height;
 
-            using var fontEncabezado = new Font("Arial", 8, FontStyle.Bold);
-            using var fontNormal = new Font("Arial", 7);
-            using var fontCodigo = new Font("Consolas", 9, FontStyle.Bold);
-
-            
+            // Factor de conversión mm -> centésimas de pulgada
+            float factor = 100f / 25.4f;
 
             // ============================================================
-            // IMAGEN DEL CÓDIGO DE BARRAS (centrada)
+            // TAMAÑOS EN MM
             // ============================================================
-            if (etiqueta.ImagenCodigo != null)
+            float anchoCodigoMm = 35f;
+            float altoCodigoMm = 6f;
+
+            float anchoLogoMm = 12f;
+            float altoLogoMm = 12f;
+            float espacioLogoMm = 1f;
+
+            float anchoCodigo = anchoCodigoMm * factor;
+            float altoCodigo = altoCodigoMm * factor;
+            float anchoLogo = anchoLogoMm * factor;
+            float altoLogo = altoLogoMm * factor;
+            float espacio = espacioLogoMm * factor;
+
+            // ============================================================
+            // FUENTES
+            // ============================================================
+            using var fontTitulo = new Font("Arial", 10, FontStyle.Bold);
+            using var fontCodigo = new Font("Arial", 8, FontStyle.Bold);
+
+            string titulo = "RPPVM";
+            SizeF tamTitulo = g.MeasureString(titulo, fontTitulo);
+            SizeF tamTexto = g.MeasureString(etiqueta.Codigo, fontCodigo);
+
+            // ============================================================
+            // CALCULAR ALTO TOTAL DEL CONTENIDO
+            // título + espacio + código + espacio + texto
+            // ============================================================
+            float espacioTituloCodigo = 1f;
+            float espacioCodigoTexto = 1f;
+
+            float altoContenido = tamTitulo.Height
+                                + espacioTituloCodigo
+                                + altoCodigo
+                                + espacioCodigoTexto
+                                + tamTexto.Height;
+
+            // ============================================================
+            // POSICIÓN VERTICAL: centrado en la etiqueta
+            // ============================================================
+            float yContenido = (altoEtiqueta - altoContenido) / 2f;
+
+            // ============================================================
+            // POSICIÓN HORIZONTAL: logo + espacio + código, centrado
+            // ============================================================
+            float anchoTotal = anchoLogo + espacio + anchoCodigo;
+            float xInicio = (anchoEtiqueta - anchoTotal) / 2f;
+
+            // Coordenadas X del código (a la derecha del logo)
+            float xCodigo = xInicio + anchoLogo + espacio;
+
+            // ============================================================
+            // 1) TÍTULO "RPPVM" — centrado sobre el código
+            // ============================================================
+            float xTitulo = xCodigo + (anchoCodigo - tamTitulo.Width) / 2f;
+            float yTitulo = yContenido;
+
+            g.DrawString(titulo, fontTitulo, Brushes.Black, xTitulo, yTitulo);
+
+            // ============================================================
+            // 2) LOGO — a la izquierda del código, alineado con el código
+            // ============================================================
+            float yCodigo = yTitulo + tamTitulo.Height + espacioTituloCodigo;
+
+            // 👇 el logo se centra verticalmente con el código
+            float yLogo = yCodigo + (altoCodigo - altoLogo) / 2f;
+
+            if (_logoRegistro != null)
             {
-                int anchoImg = 300;
-                int altoImg = 80;
-                float xCentrado = x + (470 - anchoImg) / 2;
-                g.DrawImage(etiqueta.ImagenCodigo, xCentrado, y, anchoImg, altoImg);
-                y += altoImg + 5;
+                g.DrawImage(_logoRegistro,
+                    xInicio, yLogo,
+                    anchoLogo, altoLogo);
             }
 
             // ============================================================
-            // TEXTO DEL CÓDIGO (centrado)
+            // 3) CÓDIGO DE BARRAS
             // ============================================================
-            SizeF tamTexto = g.MeasureString(etiqueta.Codigo, fontCodigo);
-            float xTexto = x + (470 - tamTexto.Width) / 2;
-            g.DrawString(etiqueta.Codigo, fontCodigo, Brushes.Black, xTexto, y);
+            if (etiqueta.ImagenCodigo != null)
+            {
+                g.DrawImage(etiqueta.ImagenCodigo,
+                    xCodigo, yCodigo,
+                    anchoCodigo, altoCodigo);
+
+                // ============================================================
+                // 4) TEXTO DEL CÓDIGO — centrado bajo el código
+                // ============================================================
+                float xTexto = xCodigo + (anchoCodigo - tamTexto.Width) / 2f;
+                float yTexto = yCodigo + altoCodigo + espacioCodigoTexto;
+
+                g.DrawString(etiqueta.Codigo, fontCodigo, Brushes.Black, xTexto, yTexto);
+            }
 
             _indiceImpresion++;
             e.HasMorePages = _indiceImpresion < _etiquetasAImprimir.Count;
         }
 
         // ============================================================
-        // GENERAR IMAGEN DEL CÓDIGO DE BARRAS
+        // GENERAR IMAGEN DEL CÓDIGO DE BARRAS (alta resolución)
         // ============================================================
         private Image GenerarImagenCodigoBarras(string contenido)
         {
@@ -381,10 +488,10 @@ namespace GestionArchivoRegistroPropiedad
                 Format = BarcodeFormat.CODE_128,
                 Options = new EncodingOptions
                 {
-                    Height = 100,
-                    Width = 300,
-                    Margin = 5,
-                    PureBarcode = true  // Solo las barras, sin texto
+                    Height = 200,
+                    Width = 900,
+                    Margin = 0,
+                    PureBarcode = true
                 },
                 Renderer = new ZXing.Windows.Compatibility.BitmapRenderer()
             };
@@ -404,6 +511,7 @@ namespace GestionArchivoRegistroPropiedad
             public string PartidaInicial { get; set; } = "";
             public string PartidaFinal { get; set; } = "";
             public Image? ImagenCodigo { get; set; }
+            public Image? Logo { get; set; }
         }
 
         // ============================================================
